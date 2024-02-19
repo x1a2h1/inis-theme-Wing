@@ -1,0 +1,23 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "test": "npx nuxi dev --dotenv .env.local",
+    "prod": "npx nuxi build --dotenv .env.production",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.10",
+    "h3": "^1.10.1",
+    "js-cookie": "^3.0.5",
+    "nuxt": "^3.10.2",
+    "timeago.js": "^4.0.2",
+    "vue": "^3.4.19",
+    "vue-router": "^4.2.5"
+  }
+}
