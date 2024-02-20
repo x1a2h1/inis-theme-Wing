@@ -64,7 +64,6 @@ const method = {
         </li>
         <li>
           <i class="czs-time"></i>
-<!--          <div class="timeago" >{{ dayjs.unix(state.data.create_time).format('YYYY-MM-DD')}}</div>-->
           <time datetime="" itemprop="datePublished"
                 pubdate>{{ dayjs.unix(state.data.create_time).format('YYYY-MM-DD HH:mm')}}</time>
         </li>
@@ -80,8 +79,8 @@ const method = {
 <!--      <meta itemprop="dateModified" content="time">-->
 <!--      <meta itemprop="image" content="">-->
     </header>
-    <div class="article-content" itemprop="articleBody" view-image>
-      <div v-html="state.data.content"></div>
+    <div class="article-content" itemprop="articleBody">
+      <div class="markdown" v-html="state.data.content" v-highLight></div>
     </div>
   </article>
 </template>

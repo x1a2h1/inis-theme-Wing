@@ -5169,3 +5169,22 @@ body .view-image-btn:hover {
         border-color: rgba(188, 195, 206, 0.2);
     }
 }
+
+/* 代码框功能美化 - 开始 */
+
+code::-webkit-scrollbar{width:6px;height:6px}
+code::-webkit-scrollbar-thumb{border-radius:6px;background-color:rgba(119,119,119,0.7)}
+code ::selection{background:rgba(40,44,52,0.7);color:#fff;text-shadow:none}
+.markdown pre{padding:0;position:relative;border-radius:10px;background:rgba(40,44,52,1)}
+.markdown pre .repair{position:absolute;width:6px;height:6px;background:	rgba(33,37,42,0.7);right:0;bottom:0}
+.hljs ul{margin:0 !important;list-style:decimal}
+.hljs ul li{padding:5px!important;line-height:14px}
+.hljs ul li::marker{color:#999}
+.markdown pre .pre-head{width:100%;color:white;background:rgba(22,22,22,0.7);height:40px;border-radius:4px;}
+.markdown pre .pre-head:before{position:relative;top:10px;left:.7em;z-index:2;-webkit-border-radius:50%;border-radius:50%;background:#fc625d;-webkit-box-shadow:20px 0 #fdbc40,40px 0 #35cd4b;box-shadow:25px 0 #fdbc40,50px 0 #35cd4b;content:" ";display: block;width: .95em;height: .95em;}
+.markdown pre:hover .pre-head .code-language{opacity:1;transition:all .3s ease}
+.markdown pre:hover .pre-head .copy{opacity:1;transition:all .6s ease}
+.markdown pre .pre-head > p{display:flex;justify-content:center;margin-top:-5px!important}
+.markdown pre .pre-head .code-language{opacity:0;font-weight:bold;font-size:.9em;font-family:Ubuntu,sans-serif;transition:all .3s ease}
+.markdown pre .pre-head .copy{opacity:0;position:absolute;right:10px;border:1px solid white;padding:0 10px;border-radius:4px;margin-top:-2px;cursor:pointer;transition:all .3s ease}
+/* 代码框功能美化 - 结束 */

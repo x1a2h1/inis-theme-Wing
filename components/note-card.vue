@@ -136,12 +136,12 @@ const method = {
         </div>
         <div class="tile-content p-0">
           <div :class="['flex-wrap', { 'd-flex': !method.isPost() }]">
-            <NuxtImg v-if="method.isPost()" class="thumbnail s-rounded" :src="note.covers" alt=""/>
+            <NuxtImg v-if="method.isPost()&& note.covers != ''" class="thumbnail s-rounded" :src="note.covers" alt=""/>
             <div :class="['article-content', { 'w-100': method.isPost() }]" v-html="method.superContent(note.content)" @click="method.handleDelegate"></div>
           </div>
           <div v-if="!method.isPost() && note.covers.length != 0 " class="notes-item-images flex-center justify-start">
             <div  class="notes-item-images__item c-zoom-in" v-for="(covers,index) in state.covers" :key="index">
-              <NuxtImg class="s-rounded" v-if="index < 12 "   :src="covers" alt @click=""/>
+              <NuxtImg class="s-rounded" v-if="index < 12 "  :src="covers" alt @click=""/>
             </div>
           </div>
 <!--          <attachment-chips v-if="note.attachment" :attachments="note.attachment"></attachment-chips>-->
