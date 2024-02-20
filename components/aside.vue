@@ -60,7 +60,7 @@ const method = {
        <div>
 <!--         默认nav-->
         <ul id="menu-header" class="header_nav reset-ul uni-bg uni-shadow" v-if="method.hasHeaderNav()">
-          <li :id="`menu-item-${item.id}`"  :class="[item.icon, `menu-item-${item.id} `, {'current-menu-item': state.currentIndex === item.id}]"  v-for="item in state.headerNavItems" :key="item.id">
+          <li :id="`menu-item-${item.id}`"  :class="[item.icon, `menu-item-${item.id} `, {'current-menu-item': $route.path == item.url}]"  v-for="item in state.headerNavItems" :key="item.id">
             <NuxtLink :to="item.url" @click="()=>{state.currentIndex = item.id;console.log(state.currentIndex)}">{{item.title}}</NuxtLink>
           </li>
         </ul>

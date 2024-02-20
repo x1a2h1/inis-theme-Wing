@@ -3,8 +3,19 @@ import {reactive} from "vue";
 
 const state =reactive({
   animation:'',
-  background:''
+  background:'animation-start'
 })
+
+onMounted(()=>{
+  method.init()
+})
+const method = {
+  init:()=>{
+    state.animation = 'animation-start';
+    state.animation = 'animation-toward';
+    state.animation = 'animation-end';;
+  }
+}
 </script>
 
 <template>

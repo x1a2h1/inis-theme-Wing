@@ -1,7 +1,9 @@
 <script lang="ts" setup>
-
-import {computed, onMounted, reactive} from "vue";
+import {onMounted, reactive} from "vue";
 import {format} from 'timeago.js'
+
+import lightgallery from 'lightgallery/vue';
+
 const props = defineProps(['note','notePraise','praise','bindEditor','superContent'])
 const emit = defineEmits(['topic'])
 const state =reactive({
@@ -134,12 +136,12 @@ const method = {
         </div>
         <div class="tile-content p-0">
           <div :class="['flex-wrap', { 'd-flex': !method.isPost() }]">
-            <img v-if="method.isPost()" class="thumbnail s-rounded" :src="note.covers" alt=""/>
+            <NuxtImg v-if="method.isPost()" class="thumbnail s-rounded" :src="note.covers" alt=""/>
             <div :class="['article-content', { 'w-100': method.isPost() }]" v-html="method.superContent(note.content)" @click="method.handleDelegate"></div>
           </div>
           <div v-if="!method.isPost() && note.covers.length != 0 " class="notes-item-images flex-center justify-start">
-            <div class="notes-item-images__item c-zoom-in" v-for="(covers,index) in state.covers" :key="index">
-              <img class="s-rounded" v-if="index < 12 "   :src="covers" alt @click=""/>
+            <div  class="notes-item-images__item c-zoom-in" v-for="(covers,index) in state.covers" :key="index">
+              <NuxtImg class="s-rounded" v-if="index < 12 "   :src="covers" alt @click=""/>
             </div>
           </div>
 <!--          <attachment-chips v-if="note.attachment" :attachments="note.attachment"></attachment-chips>-->
