@@ -212,7 +212,7 @@ const method = {
     </main>
     <div class="notes-aside">
       <div class="sticky">
-        <heat-map :noteCount="method.getCount('note')" :article-count="method.getCount('article')"/>
+        <heat-map :noteList="state.noteList" :noteCount="method.getCount('note')" :article-count="method.getCount('article')"/>
         <topic-list :ref="state.topicList" :active="state.search.topics" @topic="method.handleTopic"/>
       </div>
     </div>

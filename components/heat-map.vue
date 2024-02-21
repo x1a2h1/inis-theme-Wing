@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted } from "vue"
 import dayjs from 'dayjs'
-
 const props = defineProps({
+  noteList:[],
   postCount:Number,
   noteCount:Number,
   articleCount:Number
@@ -18,24 +18,50 @@ onMounted( ()=>{
   method.init()
 })
 const method = {
-  init:()=>{
-    console.log('获取到config',state.config)
-
+  init: () => {
+    console.log('获取到config', state.config)
+    method.handleHeatMap()
   },
-  handlerDate:():any=>{
-    const config:any = useState('config')
+  handlerDate: (): any => {
+    const config: any = useState('config')
     state.config = config.value
-    let nowDate = dayjs(new Date(),'YYYY-MM-DD')
+    let nowDate = dayjs(new Date(), 'YYYY-MM-DD')
     let date = dayjs.unix(config.value?.create_time).format('YYYY-MM-DD')
-    let time =nowDate.diff(date,'d',false)
+    let time = nowDate.diff(date, 'd', false)
 
     return time
   },
-  calendar: ()=>{
-    const { calendar } = state.heatmap
-    return Object.keys(calendar).map((day:any) => ({ day, states: calendar[day] }));
+  calendar: () => {
+    console.log('处理热力图',props.noteList)
+    //
+    // 获取当前时间前面60天的数据
+    let dateData:any = {}
+    for (let i = 0;i< 60;i++){
+      let date = dayjs().format('YYYY-MM-DD')
+
+      let day = dayjs(date).subtract(i, 'day').format('YYYY-MM-DD')
+      console.log('今天',date,'减去',i,'=',day)
+      dateData[day] = {count:0}
+
+    }
+    for (let e = 0;e<props.noteList.length;e++){
+      let pd = dayjs.unix(props.noteList[e].create_time).format("YYYY-MM-DD")
+      if (dateData[pd]){
+        dateData[pd].count++
+      }
+      console.log('发布时间',pd)
+    }
+    console.log(dateData)
+    // 获取当前时间前面60天的数据 结束
+
+    const {calendar} = state.heatmap
+    console.log('calendar值',calendar)
+    return Object.keys(dateData).map((day: any) => ({day, states: dateData[day] }));
   },
+  handleHeatMap: () => {
+  }
 }
+
 </script>
 
 <template>

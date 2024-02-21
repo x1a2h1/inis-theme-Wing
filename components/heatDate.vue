@@ -6,14 +6,20 @@ const props = defineProps({
   states: { type: Object, default: () => ({}) },
 })
 const tooltip = computed(()=>{
+  console.log(props.day,props.states)
   return `${props.day}\n${Object.keys(props.states).map(key => `${key}: ${props.states[key]}`).join('\n')}`;
 })
+const method = {
+  init:()=>{
+
+  }
+}
 </script>
 
 <template>
   <div class="heatmap-map__item tooltip" :data-tooltip="tooltip">
     <div v-if="states" class="heatmap-map__item-block">
-      <div v-for="(key, index) in Object.keys(states)" :key="index" :class="['heatmap-map__item-inner', key, { active: states[key] }]">
+      <div v-for="(key, index) in Object.keys(states)" :key="index" :class="['heatmap-map__item-inner',`level-${states.count}`, { active: states[key] }]">
       </div>
     </div>
   </div>

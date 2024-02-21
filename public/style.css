@@ -2510,13 +2510,18 @@ code {
 }
 
 .tooltip {
+
     position: relative;
 }
+
+.tooltip::before{
+    content: "♥";
+}
 .tooltip::after {
-    background: rgba(48, 55, 66, 0.95);
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 0.2rem;
     bottom: 100%;
-    color: #fff;
+    color: #000;
     content: attr(data-tooltip);
     display: block;
     font-size: 0.7rem;
@@ -2533,10 +2538,16 @@ code {
     white-space: pre;
     z-index: 300;
 }
+
 .tooltip:focus::after, .tooltip:hover::after {
-    opacity: 1;
-    transform: translate(-50%, -0.2rem);
+    opacity: .8;
+
+    transform: translate(-50%);
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
+
+
+
 .tooltip[disabled], .tooltip.disabled {
     pointer-events: auto;
 }
@@ -4049,6 +4060,30 @@ body .layout .heatmap-map__item-inner {
 }
 body .layout .heatmap-map__item-inner.notes {
     background-color: #668cff;
+}
+/*body .layout .heatmap-map__item-inner.level-4 {*/
+/*    background-color: #0e4429*/
+/*}*/
+/*body .layout .heatmap-map__item-inner.level-3 {*/
+/*    background-color: #006d32*/
+/*}*/
+/*body .layout .heatmap-map__item-inner.level-2 {*/
+/*    background-color: #26a641*/
+/*}*/
+/*body .layout .heatmap-map__item-inner.level-1 {*/
+/*    background-color: #39d353*/
+/*}*/
+body .layout .heatmap-map__item-inner.level-4 {
+    background-color: #3366ff
+}
+body .layout .heatmap-map__item-inner.level-3 {
+    background-color: #5075f3
+}
+body .layout .heatmap-map__item-inner.level-2 {
+    background-color: #668bf6
+}
+body .layout .heatmap-map__item-inner.level-1 {
+    background-color: #8da4fd
 }
 body .layout .heatmap-map__item-inner.comments {
     background-color: rgba(188, 195, 206, 0.4);
