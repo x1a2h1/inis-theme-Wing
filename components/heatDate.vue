@@ -6,7 +6,6 @@ const props = defineProps({
   states: { type: Object, default: () => ({}) },
 })
 const tooltip = computed(()=>{
-  console.log(props.day,props.states)
   return `${props.day}\n${Object.keys(props.states).map(key => `${key}: ${props.states[key]}`).join('\n')}`;
 })
 const method = {

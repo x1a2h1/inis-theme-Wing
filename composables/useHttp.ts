@@ -47,17 +47,16 @@ export async function useHttp(key:string, url:string, options:any = {}) {
             })
     }
 
-    let res = await useFetch(url, {
+    let res:any = await $fetch(url, {
         ...options,
         // 相当于响应拦截器
         transform: (res:any|object) => {
             return res.data
         }
     })
-
     // 客户端错误处理
-    if (process.client && res.error.value) {
-        const msg = res.error.value?.data?.data
+    if (process.client && res.code != 200) {
+        const msg = res.msg
         if (!options.lazy) {
             // const { message } = createDiscreteApi(['message'])
             // message.error(msg || '服务端错误')

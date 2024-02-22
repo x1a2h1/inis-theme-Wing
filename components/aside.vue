@@ -1,16 +1,45 @@
 <script lang="ts" setup>
-
-const state = reactive({
+import {useGetArticleDetail} from "~/apis";
+const route = useRoute()
+const state:any = reactive({
+  isPosts:false,
+  isChecked:false,
   headerNavItems: [],
   footerNavItems: [],
   currentIndex:1,
+  toc:[]
 })
 onMounted(async ()=>{
-  method.init()
+  await nextTick()
+  await method.init()
 })
 const method = {
-  init:()=>{
-    method.fetchMenus()
+  init:async ()=>{
+    await method.fetchMenus()
+    await method.getPostsToc()
+  },
+  getPostsToc:async ()=>{
+
+      if (route.name =='detail-type-id'){
+        let id = route.params.id
+        const {data} = await useGetArticleDetail(id)
+        let postsToc = method.handleContent(data.content)
+        state.toc = postsToc
+        if (postsToc.length > 0 ){
+          state.isPosts = true
+        }
+      }else state.isPosts = false
+  },
+  handleContent:(content:string):object[]=>{
+    const parser = new DOMParser()
+    const doc = parser.parseFromString(content,'text/html')
+    const h1Tags = doc.querySelectorAll('h1');
+    const h1Values: object[] = [];
+    h1Tags.forEach((h1Tag,index) =>{
+      const uniqueId = `anchor-${index}`;
+      h1Values.push({title:h1Tag.textContent || '',anchor:uniqueId});
+    })
+    return h1Values
   },
   hasHeaderNav:()=> {
     return state.headerNavItems.length > 0;
@@ -18,9 +47,11 @@ const method = {
   hasFooterNav:()=>{
     return state.footerNavItems.length > 0
   },
-  fetchMenus() {
+  fetchMenus:async ()=>{
     // 使用 Vue Resource 或者 Axios 等库获取菜单数据
     // 这里假设数据已经获取到并存储在 this.headerNavItems 和 this.footerNavItems 中
+
+
     state.headerNavItems = [
       { id: 1, title: '首页', url: '/',icon:'czs-home-l' },
       { id: 2, title: '作品', url: '/works',icon:'czs-clothes-l' },
@@ -32,33 +63,42 @@ const method = {
     ];
   },
 }
+watch(() => route.name,
+    async (value) => {
+  state.isPosts = false;
+  console.log('aside监听到路由:',value);
+  if (value === 'detail-type-id') {
+    await method.getPostsToc()
+  }
+    })
 </script>
 
 <template>
   <div id="aside" class="off-canvas-sidebar">
     <div class="probes"></div>
     <div class="sticky">
-<!--      <input type="radio" id="tab-toc" name="aside-radio" hidden checked>-->
-<!--      <input type="radio" id="tab-nav" name="aside-radio" hidden>-->
-<!--      <ul class="aside-tab">-->
-<!--        <li class="toc-active">-->
-<!--          <label for="tab-toc" class="c-hand flex flex-center">-->
-<!--            <i class="czs-read-l"></i>-->
-<!--          </label>-->
-<!--        </li>-->
-<!--        <li class="nav-active">-->
-<!--          <label for="tab-nav" class="c-hand flex flex-center">-->
-<!--            <i class="czs-choose-list-l"></i>-->
-<!--          </label>-->
-<!--        </li>-->
-<!--      </ul>-->
-<!--      <ul class="toc-list toc-content">-->
-<!--        <li class="toc-item nav-item" style="text-indent: 0em">-->
-<!--          <a href="#toc-0">OpenGraph是什么</a>-->
-<!--        </li>-->
-<!--      </ul>-->
-       <div>
+        <input type="radio" id="tab-toc" name="aside-radio" hidden checked>
+        <input type="radio" id="tab-nav" name="aside-radio" hidden />
+        <ul v-if="state.isPosts" class="aside-tab">
+          <li class="toc-active">
+            <label for="tab-toc" class="c-hand flex flex-center">
+              <i class="czs-read-l"></i>
+            </label>
+          </li>
+          <li class="nav-active">
+            <label for="tab-nav" class="c-hand flex flex-center">
+              <i class="czs-choose-list-l"></i>
+            </label>
+          </li>
+        </ul>
+        <ul v-if="state.isPosts" class="toc-list toc-content">
+          <li v-for="(item, index) in state.toc" :key="index" class="toc-item nav-item" style="text-indent: 0em">
+            <a :href="'#'+item.anchor">{{item.title}}</a>
+          </li>
+        </ul>
+
 <!--         默认nav-->
+      <div>
         <ul id="menu-header" class="header_nav reset-ul uni-bg uni-shadow" v-if="method.hasHeaderNav()">
           <li :id="`menu-item-${item.id}`"  :class="[item.icon, `menu-item-${item.id} `, {'current-menu-item': $route.path == item.url}]"  v-for="item in state.headerNavItems" :key="item.id">
             <NuxtLink :to="item.url" @click="()=>{state.currentIndex = item.id;console.log(state.currentIndex)}">{{item.title}}</NuxtLink>

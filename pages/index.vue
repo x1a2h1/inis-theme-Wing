@@ -41,15 +41,14 @@ const method = {
   },
   getConfig:async ()=>{
     const { data } = await useGetConfig('SITE_INFO')
-    useState('config',()=> data.value)
-    console.log(state.config)
+    useState('config',()=> data)
     useHead({
-      title:data.value.json.title,
+      title:data.json.title,
       meta:[
-        { name: data.value.json.description, content: data.value.json.keyword }
+        { name: data.json.description, content: data.json.keyword }
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: data.value.json.favicon }
+        { rel: 'icon', type: 'image/x-icon', href: data.json.favicon }
           ]
     })
   },
@@ -57,9 +56,8 @@ const method = {
 
     state.loading = true
     const { data }= await useGetNotes()
-    console.log(data.value)
-    if (data.value.data != null){
-      state.noteList = data.value.data
+    if (data.data != null){
+      state.noteList = data.data
       state.loading = false
     }
 
@@ -76,7 +74,6 @@ const method = {
   handleTabs:(item:any)=>{
     state.loading = true
     state.search.type = item.id
-    console.log("当前tabs",item)
     // 模拟请求
     setTimeout(()=>{
       method.getTest().then(()=>{
@@ -88,7 +85,6 @@ const method = {
   },
   handleTopic:(topic:any)=>{
   //   点击话题
-    console.log('topics数据',state.search.topics)
     state.search.topics = ''
     state.paging.page = 1
     state.search.topics = topic

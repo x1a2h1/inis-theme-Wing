@@ -57,7 +57,7 @@ const method = {
   superContent:(content:any)=>{
   //   todo 高亮显示
     if ( !content ) return '';
-    if ( method.isPost() ) return `<p>${content}</p>`;
+    if ( method.isPost() ) return `<p>${props.note.abstract}</p>`;
     // 高亮话题 #话题1 话题2
     Array.from(new Set(content.match(/.?#([^#|^<\s]+)/g) || []))
         .filter((text:any) => text[0] !== "/")
@@ -81,7 +81,6 @@ const method = {
         content = content.replaceAll(url, `<a href="${url}" target="_blank" class="chip text-primary tooltip" data-tooltip="${url}" style="text-decoration: none;overflow: unset"><i class="dashicons dashicons-external"></i> Link</a>`);
       });
     }
-
     return content;
   },
   handleDelegate:(e:any)=>{
@@ -101,7 +100,7 @@ const method = {
         <div class="tile-header flex-center justify-between">
           <div class="article-header text-gray text-tiny d-flex align-center">
             <h3 v-if="method.isPost()" class="text-dark h5 mt-2 mb-0">
-              <a :href="'#'">{{ note.title }}</a>
+              <NuxtLink :to="'/detail/article/'+note.id">{{ note.title }}</NuxtLink>
             </h3>
             <div v-else class="flex-center">
               <time class="mr-2" :datetime="note.create_time" itemprop="datePublished" pubdate>{{ method.noteDate(note.create_time) }}</time>
@@ -162,13 +161,11 @@ const method = {
             </button>
           </div>
 
-          <a v-if="method.isPost()" class="btn btn-link btn-sm text-gray d-flex align-center" @click="navigateTo(`/detail/article/${note.id}`)">
+          <NuxtLink  v-if="method.isPost()" class="btn btn-link btn-sm text-gray d-flex align-center" @click="navigateTo(`/detail/article/${note.id}`)">
             阅读全文
             <i class="czs-angle-right-l ml-1"></i>
-          </a>
-          <span v-else class="flex-center">
-                                    <i class="dashicons dashicons-laptop mr-1"></i>  来自 Webpage
-                                </span>
+          </NuxtLink>
+          <span v-else class="flex-center"><i class="dashicons dashicons-laptop mr-1"></i>来自 Webpage</span>
         </div>
       </div>
     </template>
@@ -177,7 +174,7 @@ const method = {
         <button slot="send-l" class="btn btn-link btn-sm mr-2" @click="state.isEditor=false">取消</button>
       </editor>
     </template>
-    <div v-if="!state.hideDivider" class="divider"></div>
+<!--    <div v-if="!state.hideDivider" class="divider"></div>-->
   </div>
 </div>
 </template>

@@ -19,3 +19,7 @@ export function useGetRandTags(){
 export function useGetConfig(key){
     return useHttpGet('getConfig',`/api/common/getConfig?key=${key}`)
 }
+
+export function useGetPage(key){
+    return useHttpGet('getPage',`/api/common/getPage?key=${key}`)
+}

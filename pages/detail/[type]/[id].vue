@@ -17,14 +17,14 @@ const state = reactive({
         nickname:String
       }
     }
-  }
+  },
+  content:''
 
 })
 
 
 
 onMounted(async ()=>{
-  await nextTick()
   await method.init()
 })
 
@@ -34,21 +34,43 @@ const method = {
   },
   getArticleData:async ()=>{
     const { data } = await useGetArticleDetail(id)
-    console.log(data)
-    state.data = data.value
+    state.data = data
+    state.content  = method.getPostsToc(data.content)
     useHead({
-      title:data.value.title
+      title:data.title
     })
-    // await useGetArticleDetail(params).then((res:any)=>{
-    //   console.log(res.data.value)
-    //   state.data = res.data.value
-    // })
   },
   onPraise:()=>{
   //   点赞
   },
   timeago:(time:number):string=>{
     return format(time * 1000 , "ZH_CN",{ relativeDate: '2018-11-11' })
+  },
+  getPostsToc:(str:string):string=>{
+
+  //   todo 获取文章目录 只获取h1，如果没有h1，则aside 设置为不显示
+
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(str, 'text/html');
+    const h1Tags = doc.querySelectorAll('h1');
+    const h1Values: object[] = [];
+
+    // 遍历h1标签，添加id并获取值
+    h1Tags.forEach((h1Tag, index) => {
+      // 生成唯一的id（这里使用了简单的递增索引，但在实际应用中你可能需要更复杂的唯一性保证）
+      const uniqueId = `anchor-${index}`;
+      h1Tag.setAttribute('id', uniqueId);
+      // 获取h1标签的文本内容
+      h1Values.push({title:h1Tag.textContent || '',anchor:uniqueId});
+      console.log('存储',useState('articleToc'))
+    });
+
+    // 使用serializer将修改后的Document对象转换回HTML字符串
+    const serializer = new XMLSerializer();
+     let content = serializer.serializeToString(doc);
+
+    // 返回修改后的HTML和所有h1标签的值
+    return content
   }
 }
 </script>
@@ -80,7 +102,7 @@ const method = {
 <!--      <meta itemprop="image" content="">-->
     </header>
     <div class="article-content" itemprop="articleBody">
-      <div class="markdown" v-html="state.data.content" v-highLight></div>
+      <div class="markdown" v-html="state.content" v-highLight></div>
     </div>
   </article>
 </template>

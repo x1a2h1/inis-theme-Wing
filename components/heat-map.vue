@@ -19,7 +19,6 @@ onMounted( ()=>{
 })
 const method = {
   init: () => {
-    console.log('获取到config', state.config)
     method.handleHeatMap()
   },
   handlerDate: (): any => {
@@ -32,15 +31,12 @@ const method = {
     return time
   },
   calendar: () => {
-    console.log('处理热力图',props.noteList)
-    //
     // 获取当前时间前面60天的数据
     let dateData:any = {}
     for (let i = 0;i< 60;i++){
       let date = dayjs().format('YYYY-MM-DD')
 
       let day = dayjs(date).subtract(i, 'day').format('YYYY-MM-DD')
-      console.log('今天',date,'减去',i,'=',day)
       dateData[day] = {count:0}
 
     }
@@ -49,13 +45,10 @@ const method = {
       if (dateData[pd]){
         dateData[pd].count++
       }
-      console.log('发布时间',pd)
     }
-    console.log(dateData)
     // 获取当前时间前面60天的数据 结束
 
-    const {calendar} = state.heatmap
-    console.log('calendar值',calendar)
+    // const {calendar} = state.heatmap
     return Object.keys(dateData).map((day: any) => ({day, states: dateData[day] }));
   },
   handleHeatMap: () => {

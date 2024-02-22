@@ -17,8 +17,7 @@ const method = {
   init:async ()=>{
     state.loading = true
     const {data } = await useGetRandTags()
-    state.topics = data.value
-    console.log(state.topics)
+    state.topics = data
   },
   handleTopic:((topic:any)=>{
       emit('topic', topic.name)
