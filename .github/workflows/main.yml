@@ -9,24 +9,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - name: install pnpm
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 8
-          run_install: |
-            - recursive: true
-              args: [--frozen-lockfile, --strict-peer-dependencies]
-            - args: [--global, gulp, prettier, typescript]
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: install pnpm
+      uses: pnpm/action-setup@v3
+      with:
+        version: 8
+        run_install: |
+          - recursive: true
+            args: [--frozen-lockfile, --strict-peer-dependencies]
+          - args: [--global, gulp, prettier, typescript]
 
-      - name: build project
-      - run: |
+    - name: build project
+    - run: |
           pnpm build
           ls
           - shell:bash
-      - name: public project
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
-        with:
-          files: ./output
+    - name: public project
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: ./output
