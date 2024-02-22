@@ -1,9 +1,7 @@
 #  打包
 # cp ecosystem.config.cjs
 on:
-  push:
-    tags:
-      - "v*.*.*"
+  - push
 
 jobs:
   install:
