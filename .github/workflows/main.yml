@@ -1,0 +1,4 @@
+#  打包
+# cp ecosystem.config.cjs
+name: 'inis-theme-wing'
+on:
