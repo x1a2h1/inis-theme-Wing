@@ -1,20 +1,33 @@
 <script setup lang="ts">
-
-import {reactive} from "vue";
-
+import {useGetConfig} from "~/apis";
 const state = reactive({
   animation:true,
-  background:''
+  background:'',
+  config:[]
 })
+
+onMounted( ()=>{
+  method.init()
+
+})
+const method = {
+  init:()=>{
+    method.getGlobalConfig()
+  },
+  getGlobalConfig:async ()=>{
+    state.config = useState('config')
+  }
+}
+
 </script>
 
 <template>
     <div id="header" class="flex-center justify-between">
       <hgroup class="logo" itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
         <h1 class="fullname" itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
-          <a href="#">夏至</a>
+          <a href="#">{{ state.config?.json?.title ||'x1a2h1'}}</a>
         </h1>
-        <meta itemprop="name" content="名字">
+        <meta itemprop="name" :content="state.config?.json?.remark">
         <meta itemprop="url" content="#">
       </hgroup>
       <section class="header__right d-flex">

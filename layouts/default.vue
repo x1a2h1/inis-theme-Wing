@@ -6,28 +6,18 @@ const state =reactive({
   background:'animation-start'
 })
 
-onMounted(()=>{
-  method.init()
+onMounted(async ()=>{
+  await method.init()
 })
 const method = {
-  init:()=>{
-    state.animation = 'animation-start';
-    state.animation = 'animation-toward';
-    state.animation = 'animation-end';;
+  init:async ()=>{
+    // state.animation = 'animation-start';
+    // state.animation = 'animation-toward';
+    // state.animation = 'animation-end';;
+
   }
 }
-watch(route,async (newV:any,oldV:any)=>{
-  console.log('默认布局下监听',newV,oldV)
-  try {
-    console.log('默认布局下监听',newV,oldV)
 
-  } catch (error) {
-    console.log('Error! Could not reach the API. ' + error)
-  } finally {
-    console.log('默认布局下监听',newV,oldV)
-  }
-  }
-)
 </script>
 
 <template>

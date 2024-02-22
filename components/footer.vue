@@ -1,9 +1,11 @@
 <script setup lang="ts">
 
 import {onMounted, reactive} from "vue";
+import config from "../plugins/config";
 
 const state = reactive({
   animation: "",
+  config:useState('config'),
   modeList: [
     { name: 'Auto', icon: 'czs-bot', mode: 'auto' },
     // { name: $lang.translate('Auto'), icon: 'czs-bot', mode: 'auto' },
@@ -21,9 +23,9 @@ const state = reactive({
 onMounted(async ()=>{
   await method.init()
 })
-
 const method = {
   init:async ()=>{
+
      console.log("初始化footer")
   },
   toggleSkinMode:(e:any)=>{
@@ -50,24 +52,24 @@ const method = {
     console.log("返回顶部")
   }
 }
+console.log(state.config)
+
 </script>
 
 <template>
   <div id="footer">
   <div class="d-flex flex-center justify-between flex-wrap">
     <div class='left'>
-            <span>&copy; 2024 <a
-                href="#">夏至</a></span>
+            <span>&copy; 2024 <a href="#">{{state.config?.json?.title|| '夏至'}}</a></span>
     </div>
     <div class='right'>
-      <span>Theme by <a class="theme-name" href="https://biji.io" target="_blank">wing</a></span>
+      <span>Theme by <a class="theme-name" href="#" target="_blank">wing</a></span>
     </div>
   </div>
   <div class="text-center text-tiny mt-2 w-100" style="opacity: 0.2;">
-    琼ICP备2021000719号-1
-    <span class="mx-1"><a href="https://beian.miit.gov.cn" target="_blank">琼ICP备2021000719号-1</a></span>
-    <span class="mx-1"><a href="https://www.beian.gov.cn/portal/registerSystemInfo"
-                          target="_blank">琼ICP备2021000719号-1</a></span>
+    <span class="mx-1"><a href="https://beian.miit.gov.cn" target="_blank">{{state.config?.json?.copy?.code}}</a></span>
+<!--    <span class="mx-1"><a href="https://www.beian.gov.cn/portal/registerSystemInfo"-->
+<!--                          target="_blank">琼ICP备2021000719号-1</a></span>-->
   </div>
   <div class="scroll-tools mr-2">
     <div class="dropdown" hover-show perspective>
@@ -84,19 +86,19 @@ const method = {
       </ul>
     </div>
     <div style="height: 0.4rem;"></div>
-    <div class="dropdown" hover-show perspective>
-      <a class="btn btn-link btn-action uni-bg bg-blur uni-shadow dropdown-toggle flex-center"
-         href="javascript:void(0);" tabindex="0">
-        <i class="czs-earth"></i>
-      </a>
-      <ul class="menu menu-left mode-switch uni-card uni-bg bg-blur uni-shadow" @click="method.toggleLanguage">
-        <li v-for="item of state.langList" class="menu-item">
-          <a class="flex-center" :data-mode="item.mode" href="javascript:void(0);">
-            <i :class="[item.icon, 'mr-1']"></i>{{ item.name }}
-          </a>
-        </li>
-      </ul>
-    </div>
+<!--    <div class="dropdown" hover-show perspective>-->
+<!--      <a class="btn btn-link btn-action uni-bg bg-blur uni-shadow dropdown-toggle flex-center"-->
+<!--         href="javascript:void(0);" tabindex="0">-->
+<!--        <i class="czs-earth"></i>-->
+<!--      </a>-->
+<!--      <ul class="menu menu-left mode-switch uni-card uni-bg bg-blur uni-shadow" @click="method.toggleLanguage">-->
+<!--        <li v-for="item of state.langList" class="menu-item">-->
+<!--          <a class="flex-center" :data-mode="item.mode" href="javascript:void(0);">-->
+<!--            <i :class="[item.icon, 'mr-1']"></i>{{ item.name }}-->
+<!--          </a>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
     <div style="height: 0.4rem;"></div>
     <a class="scroll-top btn btn-link btn-action uni-bg bg-blur uni-shadow flex-center"
        href="javascript: $h.scrollTo();">
