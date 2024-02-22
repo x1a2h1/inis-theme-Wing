@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node.js environment
-        uses: actions/setup-node@v4.0.2
+      - uses: actions/setup-node@v4.0.2
       - name: install pnpm
       - uses: pnpm/action-setup@v3
         with:
@@ -22,7 +22,10 @@ jobs:
             - args: [--global, gulp, prettier, typescript]
 
       - name: build project
-      - run: pnpm build
+      - run: |
+          pnpm build
+          ls
+          - shell:bash
       - name: public project
       - name: Release
         uses: softprops/action-gh-release@v1
