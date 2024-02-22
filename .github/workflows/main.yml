@@ -1,8 +1,10 @@
 #  打包
 # cp ecosystem.config.cjs
 on:
-  - push
-  - pull_request
+  push:
+    tags:
+      - "v*.*.*"
+      - pull_request
 
 jobs:
   install:
