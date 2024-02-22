@@ -1,4 +1,14 @@
 #  打包
 # cp ecosystem.config.cjs
-name: 'inis-theme-wing'
-on:
+name: 'build'
+on: push
+
+jobs:
+  runs-on: ubuntu-latest
+  outputs:
+    runs-on:
+    steps:
+      - run:
+        name: touch file
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
