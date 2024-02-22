@@ -1,10 +1,9 @@
 function useGetFetchOptions(options:any) {
         const config = useRuntimeConfig()
-    options.baseURL = options.baseURL ?? config.apiBase
+    options.baseURL = options.baseURL
 
     // 请求headers配置
     options.headers = options.headers ?? {
-        'qq-key':config.apiSecreta
     }
     options.initialCache = options.initialCache ?? false
     options.lazy = options.lazy ?? false

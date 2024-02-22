@@ -17,13 +17,8 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig:{
-    apiBase:'https://wing.crunl.cn/api',
-    apiSecret: 'J0RIWGTUUWBU9KB1TZPQ9VO7DR9D8I8L',
-    public: {
-      apiBase:'',
-      apiSecret: '',
-
-    }
+    apiBase:'',
+    apiSecret: '',
   },
 
   devtools: { enabled: true },
