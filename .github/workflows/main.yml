@@ -1,7 +1,6 @@
 #  打包
 # cp ecosystem.config.cjs
-on:
-  - push
+on: push
 
 jobs:
   install:
@@ -24,7 +23,6 @@ jobs:
           ls -a
     - name: Release
       uses: softprops/action-gh-release@v0.1.15
-      if: startsWith(github.ref, 'refs/tags/')
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
