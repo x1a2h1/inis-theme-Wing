@@ -1,18 +1,20 @@
 #  打包
 # cp ecosystem.config.cjs
-name: Node.js CI
-
-on: [push]
+on:
+  - push
+  - pull_request
 
 jobs:
-  build:
-
+  install:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: pnpm/action-setup@v3.0.0
-      - run: pnpm install
-      - run: pnpm build
-      - run: node .output/server/index.mjs
+      - uses: actions/checkout@v3
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile, --strict-peer-dependencies]
+            - args: [--global, gulp, prettier, typescript]
