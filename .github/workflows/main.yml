@@ -1,7 +1,7 @@
 #  打包
 # cp ecosystem.config.cjs
-on: 
-  push: 
+on:
+  push:
     tags:
       - "v*.*.*"
 
@@ -10,23 +10,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: install pnpm
-      uses: pnpm/action-setup@v3
-      with:
-        version: 8
-        run_install: |
-          - recursive: true
-            args: [--frozen-lockfile, --strict-peer-dependencies]
-          - args: [--global, gulp, prettier, typescript]
-    - name: build project
-      run: |
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile, --strict-peer-dependencies]
+            - args: [--global, gulp, prettier, typescript]
+      - name: build project
+        run: |
           pnpm build
-          ls -a
-    - name: Release
-      uses: softprops/action-gh-release@v0.1.15
-      env:
+          cp static/ecosystem.config.cjs .output/
+          zip -r inis-theme-wing.zip .output/
+      - name: Release
+        uses: softprops/action-gh-release@v0.1.15
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        files: .output/
+        with:
+          files: inis-theme-wing.zip
