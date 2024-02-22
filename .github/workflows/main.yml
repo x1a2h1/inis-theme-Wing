@@ -9,22 +9,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v4.0.2
-      with:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.2
+        with:
         node-version: '18.x'
-    - uses: pnpm/action-setup@v3
-      with:
+      - uses: pnpm/action-setup@v3
+        with:
           version: 8
           run_install: |
             - recursive: true
               args: [--frozen-lockfile, --strict-peer-dependencies]
             - args: [--global, gulp, prettier, typescript]
 
-    - name: build project
-    - run: pnpm build
-    - name: public project
-    - uses: release-drafter/release-drafter@v6.0.0
-      env:
+      - name: build project
+      - run: pnpm build
+      - name: public project
+      - uses: release-drafter/release-drafter@v6.0.0
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
