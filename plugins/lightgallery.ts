@@ -1,8 +1,9 @@
-import lgThumbnail from 'lightgallery/plugins/thumbnail'
 import lgZoom from 'lightgallery/plugins/zoom'
 import 'lightgallery/css/lightgallery.css'
 import 'lightgallery/css/lg-zoom.css'
 import 'lightgallery/css/lg-video.css'
+import 'lightgallery/css/lg-transitions.css'
+import 'lightgallery/css/lg-comments.css'
 import lightGallery from "lightgallery";
 export default defineNuxtPlugin(async (NuxtApp)=>{
     NuxtApp.vueApp.directive('lightgallery',(el)=>{
@@ -10,11 +11,11 @@ export default defineNuxtPlugin(async (NuxtApp)=>{
         const imgRow = el.querySelectorAll('img')
         const plugin = lightGallery(lg, {
             selector: imgRow,
+            mode:'lg-slide-skew-only-y-rev',
             controls: true,
-            allowMediaOverlap:false,
+            counter:false,
             download:false,
-            enableDrag:false,
-            loop:false
+            loop:false,
         });
 
         watch(()=>useRoute().name,async ()=>{
