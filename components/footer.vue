@@ -1,10 +1,11 @@
 <script setup lang="ts">
-
-import {onMounted, reactive} from "vue";
 import config from "../plugins/config";
+
+const skinMode:any = useCookie('skin-mode');
 
 const state = reactive({
   animation: "",
+  skinMode:useCookie('skin-mode'),
   config:useState('config'),
   modeList: [
     { name: 'Auto', icon: 'czs-bot', mode: 'auto' },
@@ -25,14 +26,16 @@ onMounted(async ()=>{
 })
 const method = {
   init:async ()=>{
-
-     console.log("初始化footer")
   },
   toggleSkinMode:(e:any)=>{
+    console.log('footer',e.target)
     const target = e.target;
     if ( !target.closest('a') ) return;
     const mode = target.dataset.mode;
-    localStorage.setItem('skin-mode', mode);
+    if (skinMode.value != mode) {
+      skinMode.value = mode
+    }
+    console.log("切换成功：",useCookie('skin-mode'));
     ((body) => {
       body.remove('auto', 'light', 'dark');
       body.add(mode);
@@ -43,7 +46,7 @@ const method = {
     const target = e.target;
     if ( !target.closest('a') ) return;
     const lang = target.dataset.mode;
-    Cookies.set('lang', lang);
+    useCookie('lang', lang);
     // 刷新页面
     location.reload();
   },
@@ -60,7 +63,7 @@ console.log(state.config)
   <div id="footer">
   <div class="d-flex flex-center justify-between flex-wrap">
     <div class='left'>
-            <span>&copy; 2024 <a href="#">{{state.config?.json?.title|| '夏至'}}</a></span>
+            <span>&copy; 2024 {{state.skinMode}} <a href="#">{{state.config?.json?.title|| '夏至'}}</a></span>
     </div>
     <div class='right'>
       <span>Theme by <a class="theme-name" href="#" target="_blank">wing</a></span>

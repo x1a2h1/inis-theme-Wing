@@ -1,11 +1,23 @@
 <script lang="ts" setup>
 import {useGetConfig} from "~/apis";
+const skinMode:any = useCookie('skin-mode');
 
-onBeforeMount(()=>{
-  method.getGlobalConfig()
+
+onBeforeMount(async ()=>{
+  ((body) => {
+    if (skinMode.value === undefined){
+      body.add('auto')
+    }else {
+      body.add(skinMode.value)
+    }
+  })(document.documentElement.classList)
+  method.init()
+  await method.getGlobalConfig()
 })
 const method = {
   init:()=>{
+
+    console.log(useCookie('skin-mode'))
   },
   getGlobalConfig:async ()=>{
     const { data } = await useGetConfig('SITE_INFO')
