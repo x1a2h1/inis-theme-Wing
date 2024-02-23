@@ -7,14 +7,14 @@ const route = useRoute()
 const {type,id} = route.params
 const state = reactive({
   data:{
-    title:String,
+    title:'',
     create_time:0,
-    content:String,
+    content:'',
     result:{
       like:[],
 
       author:{
-        nickname:String
+        nickname:''
       }
     }
   },
@@ -31,14 +31,17 @@ onMounted(async ()=>{
 const method = {
   init:async ()=>{
     await method.getArticleData()
+    console.log(state.data.content)
   },
   getArticleData:async ()=>{
     const { data } = await useGetArticleDetail(id)
     state.data = data
+    console.log(data)
     state.content  = method.getPostsToc(data.content)
     useHead({
       title:data.title
     })
+    return data.content
   },
   onPraise:()=>{
   //   点赞
@@ -47,9 +50,7 @@ const method = {
     return format(time * 1000 , "ZH_CN",{ relativeDate: '2018-11-11' })
   },
   getPostsToc:(str:string):string=>{
-
   //   todo 获取文章目录 只获取h1，如果没有h1，则aside 设置为不显示
-
     const parser = new DOMParser();
     const doc = parser.parseFromString(str, 'text/html');
     const h1Tags = doc.querySelectorAll('h1');
@@ -62,7 +63,6 @@ const method = {
       h1Tag.setAttribute('id', uniqueId);
       // 获取h1标签的文本内容
       h1Values.push({title:h1Tag.textContent || '',anchor:uniqueId});
-      console.log('存储',useState('articleToc'))
     });
 
     // 使用serializer将修改后的Document对象转换回HTML字符串
@@ -71,10 +71,7 @@ const method = {
 
     // 返回修改后的HTML和所有h1标签的值
     return content
-  },
-  getImg:($event:any)=>{
-    console.log($event)
-  },
+  }
 }
 </script>
 
@@ -105,7 +102,9 @@ const method = {
 <!--      <meta itemprop="image" content="">-->
     </header>
     <div class="article-content" itemprop="articleBody">
-      <div id="lightgallery" class="markdown" v-html="state.content" v-highLight v-lightgallery></div>
+      <div v-if="state.data?.editor == 'tinymce'" id="lightgallery" class="markdown" v-html="state.content" v-highLight v-lightgallery></div>
+
+      <markdown-it v-if="state.data?.editor != 'tinymce'" :content="state.data.content"/>
     </div>
   </article>
 </template>

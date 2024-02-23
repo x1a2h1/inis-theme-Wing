@@ -12,12 +12,14 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@shikijs/markdown-it": "^1.1.6",
     "dayjs": "^1.11.10",
     "h3": "^1.10.1",
     "highlight.js": "^11.9.0",
     "highlightjs-line-numbers.js": "^2.8.0",
     "js-cookie": "^3.0.5",
     "lightgallery": "^2.7.2",
+    "markdown-it": "^14.0.0",
     "nuxt": "^3.10.2",
     "timeago.js": "^4.0.2",
     "vue": "^3.4.19",
