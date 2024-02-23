@@ -1,8 +1,12 @@
 <script lang="ts" setup>
 import {useGetConfig} from "~/apis";
 const skinMode:any = useCookie('skin-mode');
-
-
+const config = useState('config')
+useHead({
+  link:[
+    {rel:'icon',type:'image/x-icon',href:config?.value?.json?.favicon}
+  ]
+})
 onBeforeMount(async ()=>{
   ((body) => {
     if (skinMode.value === undefined){

@@ -55,11 +55,17 @@ const method = {
     state.headerNavItems = [
       { id: 1, title: '首页', url: '/',icon:'czs-home-l' },
       { id: 2, title: '作品', url: '/works',icon:'czs-clothes-l' },
-      { id: 3, title: '关于', url: '/about',icon:'czs-code-l' },
     ];
     state.footerNavItems = [
-      { id: 4, title: '追番', url: '/privacy-policy' },
-      { id: 5, title: '音乐', url: '/terms-of-service' },
+      { id: 3, title: '关于博主', url: '/about',icon:'czs-code-l',children:[
+          {
+            title:'追番',
+            url:'#'
+          },
+          ]
+      },
+      { id: 4, title: '友链', url: '/links' },
+      // { id: 5, title: '音乐', url: '/terms-of-service' },
     ];
   },
 }
@@ -104,14 +110,18 @@ watch(() => route.name,
             <NuxtLink :to="item.url" @click="()=>{state.currentIndex = item.id}">{{item.title}}</NuxtLink>
           </li>
         </ul>
-
-<!--        <nav id="menu-bottom" class="footer_nav reset-ul uni-bg uni-shadow " v-if="method.hasFooterNav">-->
-<!--          <ul>-->
-<!--            <li v-for="item in state.footerNavItems" :key="item.id">-->
-<!--              <a :href="item.url">{{ item.title }}</a>-->
-<!--            </li>-->
-<!--          </ul>-->
-<!--        </nav>-->
+        <div id="menu-bottom" class="footer_nav reset-ul uni-bg uni-shadow " v-if="method.hasFooterNav">
+          <ul>
+            <li v-for="item in state.footerNavItems" :key="item.id" :id="`menu-item-${item.id}`"  :class="[`menu-item-${item.id} `, {'current-menu-item': $route.path == item.url}]">
+              <a :href="item.url">{{ item.title }}</a>
+              <ul class="sub-menu">
+                <li v-for="(child, index) in item.children" :key="index">
+                  <a :href="'#' + child.url">{{ child.title }}</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
         <div class="aside-widget-area">
         </div>
       </div>

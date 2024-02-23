@@ -23,3 +23,11 @@ export function useGetConfig(key){
 export function useGetPage(key){
     return useHttpGet('getPage',`/api/common/getPage?key=${key}`)
 }
+
+export function useGetBanner(){
+    return useHttpGet('getBanner','/api/common/getBanner')
+}
+
+export function useGetLinks(){
+    return useHttpGet('getLink','/api/common/getLinks')
+}

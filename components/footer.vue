@@ -8,7 +8,7 @@ const state = reactive({
   skinMode:useCookie('skin-mode'),
   config:useState('config'),
   modeList: [
-    { name: 'Auto', icon: 'czs-bot', mode: 'auto' },
+    { name: 'Auto', icon: 'czs-web-edit', mode: 'auto' },
     // { name: $lang.translate('Auto'), icon: 'czs-bot', mode: 'auto' },
     { name: 'Light', icon: 'czs-sun', mode: 'light' },
     { name: 'Dark', icon: 'czs-moon', mode: 'dark' },
