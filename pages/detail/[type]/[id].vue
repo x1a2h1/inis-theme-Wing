@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import {onMounted, reactive} from "vue";
 import  { useGetArticleDetail} from "~/apis";
+
 import { format } from 'timeago.js'
 import dayjs from "dayjs";
 const route = useRoute()
@@ -71,7 +71,10 @@ const method = {
 
     // 返回修改后的HTML和所有h1标签的值
     return content
-  }
+  },
+  getImg:($event:any)=>{
+    console.log($event)
+  },
 }
 </script>
 
@@ -102,7 +105,7 @@ const method = {
 <!--      <meta itemprop="image" content="">-->
     </header>
     <div class="article-content" itemprop="articleBody">
-      <div class="markdown" v-html="state.content" v-highLight></div>
+      <div id="lightgallery" class="markdown" v-html="state.content" v-highLight v-lightgallery></div>
     </div>
   </article>
 </template>

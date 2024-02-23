@@ -1,8 +1,5 @@
 <script lang="ts" setup>
-import {onMounted, reactive} from "vue";
 import {format} from 'timeago.js'
-
-import lightgallery from 'lightgallery/vue';
 
 const props = defineProps(['note','notePraise','praise','bindEditor','superContent'])
 const emit = defineEmits(['topic'])
@@ -31,6 +28,7 @@ const state =reactive({
 })
 
 onMounted(async ()=>{
+  await nextTick()
   await method.init()
 })
 
@@ -100,7 +98,7 @@ const method = {
         <div class="tile-header flex-center justify-between">
           <div class="article-header text-gray text-tiny d-flex align-center">
             <h3 v-if="method.isPost()" class="text-dark h5 mt-2 mb-0">
-              <NuxtLink :to="'/detail/article/'+note.id">{{ note.title }}</NuxtLink>
+              <NuxtLink  :to="'/detail/article/'+note.id">{{ note.title }}</NuxtLink>
             </h3>
             <div v-else class="flex-center">
               <time class="mr-2" :datetime="note.create_time" itemprop="datePublished" pubdate>{{ method.noteDate(note.create_time) }}</time>
@@ -135,12 +133,12 @@ const method = {
         </div>
         <div class="tile-content p-0">
           <div :class="['flex-wrap', { 'd-flex': !method.isPost() }]">
-            <NuxtImg v-if="method.isPost()&& note.covers != ''" class="thumbnail s-rounded" :src="note.covers" alt=""/>
+            <NuxtImg loading="lazy" decoding="async" v-if="method.isPost()&& note.covers != ''" class="thumbnail s-rounded" :src="note.covers" alt="" />
             <div :class="['article-content', { 'w-100': method.isPost() }]" v-html="method.superContent(note.content)" @click="method.handleDelegate"></div>
           </div>
-          <div v-if="!method.isPost() && note.covers.length != 0 " class="notes-item-images flex-center justify-start">
-            <div  class="notes-item-images__item c-zoom-in" v-for="(covers,index) in state.covers" :key="index">
-              <NuxtImg class="s-rounded" v-if="index < 12 "  :src="covers" alt @click=""/>
+          <div v-if="!method.isPost() && note.covers.length != 0"  id="lightgallery" class="notes-item-images flex-center justify-start" v-lightgallery>
+            <div class="notes-item-images__item c-zoom-in" v-for="(covers,index) in state.covers" :key="index">
+              <NuxtImg loading="lazy" decoding="async"  class="s-rounded" v-if="index < 12 "  :src="covers" alt @click=""/>
             </div>
           </div>
 <!--          <attachment-chips v-if="note.attachment" :attachments="note.attachment"></attachment-chips>-->
@@ -180,5 +178,4 @@ const method = {
 </template>
 
 <style scoped>
-
 </style>
