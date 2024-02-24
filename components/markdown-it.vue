@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import MarkdownIt from 'markdown-it'
 import Shiki from "@shikijs/markdown-it";
+
 const props:any = defineProps({
   content:String || undefined
 })
 const md = MarkdownIt()
 
-console.log(md.render(props.content))
 md.use( await Shiki({
   themes: {
-    light: 'rose-pine-dawn',
-    dark: 'rose-pine',
+    light: 'catppuccin-latte',
+    dark: 'nord',
   },
   transformers:[
     {
@@ -24,6 +24,9 @@ md.use( await Shiki({
 
 const method = {
   init:()=>{
+    console.log(md.render(props.content))
+  },
+  handleContent:()=>{
 
   }
 }
