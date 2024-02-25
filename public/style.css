@@ -5036,86 +5036,86 @@ body .view-image-btn:hover {
 }
 
 /* Dark Mode */
-.dark {
+.dark-mode {
     background-color: #232830;
 }
-.dark body {
+.dark-mode body {
     background-color: rgba(35, 40, 48, 0.8);
 }
-.dark body .chip {
+.dark-mode body .chip {
     background-color: rgba(188, 195, 206, 0.1);
 }
-.dark body .loading-full {
+.dark-mode body .loading-full {
     background-color: rgba(42, 48, 57, 0.5);
 }
-.dark body #app.layout .uni-bg, .dark body #app.layout #aside #tab-toc:checked ~ .aside-tab .toc-active label, .dark body #app.layout #aside #tab-nav:checked ~ .aside-tab .nav-active label, .dark body #app.layout #notes .notes-tabbar {
+.dark-mode body #app.layout .uni-bg, .dark-mode body #app.layout #aside #tab-toc:checked ~ .aside-tab .toc-active label, .dark-mode body #app.layout #aside #tab-nav:checked ~ .aside-tab .nav-active label, .dark-mode body #app.layout #notes .notes-tabbar {
     background-color: rgba(42, 48, 57, 0.9);
 }
-.dark body #app.layout .modal-overlay {
+.dark-mode body #app.layout .modal-overlay {
     background-color: rgba(48, 55, 66, 0.8);
 }
-.dark body #app.layout .modal-container {
+.dark-mode body #app.layout .modal-container {
     background-color: #303742;
 }
-.dark body #app.layout .modal-container .form-input, .dark body #app.layout .modal-container #comments #comment_form .editor-content, .dark body #app.layout #comments #comment_form .modal-container .editor-content {
+.dark-mode body #app.layout .modal-container .form-input, .dark-mode body #app.layout .modal-container #comments #comment_form .editor-content, .dark-mode body #app.layout #comments #comment_form .modal-container .editor-content {
     color: #bcc3ce;
     background-color: rgba(188, 195, 206, 0.1);
 }
-.dark body #app.layout .modal-container .form-input:not(:focus), .dark body #app.layout .modal-container #comments #comment_form .editor-content:not(:focus), .dark body #app.layout #comments #comment_form .modal-container .editor-content:not(:focus) {
+.dark-mode body #app.layout .modal-container .form-input:not(:focus), .dark-mode body #app.layout .modal-container #comments #comment_form .editor-content:not(:focus), .dark-mode body #app.layout #comments #comment_form .modal-container .editor-content:not(:focus) {
     border-color: rgba(188, 195, 206, 0.2);
 }
-.dark body #app.layout .menu .menu-item a:hover, .dark body #app.layout .menu .menu-item a:focus, .dark body #app.layout .menu .menu-item a:active, .dark body #app.layout .menu .menu-item a.active {
+.dark-mode body #app.layout .menu .menu-item a:hover, .dark-mode body #app.layout .menu .menu-item a:focus, .dark-mode body #app.layout .menu .menu-item a:active, .dark-mode body #app.layout .menu .menu-item a.active {
     background-color: rgba(69, 80, 96, 0.5);
 }
-.dark body #app.layout .menu-badge .label {
+.dark-mode body #app.layout .menu-badge .label {
     color: #bcc3ce;
     background-color: rgba(188, 195, 206, 0.1);
 }
-.dark body #app.layout #header .logo .fullname a {
+.dark-mode body #app.layout #header .logo .fullname a {
     color: #f7f8f9;
 }
-.dark body #app.layout #header .header__right .dark-mode-btn {
+.dark-mode body #app.layout #header .header__right .dark-mode-btn {
     display: none;
 }
-.dark body #app.layout #header .header__right .light-mode-btn {
+.dark-mode body #app.layout #header .header__right .light-mode-btn {
     display: inline-flex;
 }
-.dark body #app.layout #aside {
+.dark-mode body #app.layout #aside {
     background: #303742;
 }
-.dark body #app.layout #aside .header_nav li:not([class*=current-]),
-.dark body #app.layout #aside .footer_nav li:not([class*=current-]) {
+.dark-mode body #app.layout #aside .header_nav li:not([class*=current-]),
+.dark-mode body #app.layout #aside .footer_nav li:not([class*=current-]) {
     color: #bcc3ce;
 }
-.dark body #app.layout #main {
+.dark-mode body #app.layout #main {
     color: #f7f8f9;
 }
-.dark body #app.layout #main .content::after {
+.dark-mode body #app.layout #main .content::after {
     background-color: #2a3039;
 }
-.dark body #app.layout #main .article-mask:not(:hover) .article-title {
+.dark-mode body #app.layout #main .article-mask:not(:hover) .article-title {
     color: #f7f8f9 !important;
 }
-.dark body #app.layout #main .article-thumbnail {
+.dark-mode body #app.layout #main .article-thumbnail {
     box-shadow: 0 0 0 1px rgba(188, 195, 206, 0.1);
 }
-.dark body #app.layout #main .pagination li a {
+.dark-mode body #app.layout #main .pagination li a {
     color: #f7f8f9;
 }
-.dark body #app.layout #notes .notes-item h3.h5 a:not(:hover) {
+.dark-mode body #app.layout #notes .notes-item h3.h5 a:not(:hover) {
     color: #fff !important;
 }
-.dark body #app.layout #notes .notes-item .dropdown .menu {
+.dark-mode body #app.layout #notes .notes-item .dropdown .menu {
     box-shadow: 0 0 1px #455060;
 }
-.dark body #app.layout #comments #comment_form .userinfo {
+.dark-mode body #app.layout #comments #comment_form .userinfo {
     background-color: #303742;
     box-shadow: 0 0 2rem 1px rgba(188, 195, 206, 0.2), 0 0 0 999rem rgba(48, 55, 66, 0.2);
 }
-.dark body #app.layout #comments #comment_form .form-input, .dark body #app.layout #comments #comment_form .editor-content {
+.dark-mode body #app.layout #comments #comment_form .form-input, .dark-mode body #app.layout #comments #comment_form .editor-content {
     color: #bcc3ce;
 }
-.dark body #app.layout #comments #comment_form .form-input:not(:focus), .dark body #app.layout #comments #comment_form .editor-content:not(:focus) {
+.dark-mode body #app.layout #comments #comment_form .form-input:not(:focus), .dark-mode body #app.layout #comments #comment_form .editor-content:not(:focus) {
     border-color: rgba(188, 195, 206, 0.2);
 }
 
@@ -5239,8 +5239,8 @@ code ::selection{background:rgba(40,44,52,0.7);color:#fff;text-shadow:none}
     }
 }
 
-.dark .shiki,
-.dark .shiki span {
+.dark-mode .shiki,
+.dark-mode .shiki span {
     color: var(--shiki-dark) !important;
     background-color: var(--shiki-dark-bg) !important;
     /* 可选，用于定义字体样式 */

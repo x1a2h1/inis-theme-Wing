@@ -15,12 +15,11 @@ export default defineNuxtConfig({
     }
 
   },
-
   runtimeConfig:{
     apiBase:'',
     apiSecret: '',
   },
 
   devtools: { enabled: true },
-  modules: ["@nuxt/image"]
+  modules: ["@nuxt/image",'@nuxtjs/color-mode']
 })

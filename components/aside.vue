@@ -113,10 +113,10 @@ watch(() => route.name,
         <div id="menu-bottom" class="footer_nav reset-ul uni-bg uni-shadow " v-if="method.hasFooterNav">
           <ul>
             <li v-for="item in state.footerNavItems" :key="item.id" :id="`menu-item-${item.id}`"  :class="[`menu-item-${item.id} `, {'current-menu-item': $route.path == item.url}]">
-              <a :href="item.url">{{ item.title }}</a>
+              <NuxtLink :href="item.url">{{ item.title }}</NuxtLink>
               <ul class="sub-menu">
-                <li v-for="(child, index) in item.children" :key="index">
-                  <a :href="'#' + child.url">{{ child.title }}</a>
+                <li v-for="(child, index) in item?.children" :key="index">
+                  <NuxtLink :href="child.url">{{ child.title }}</NuxtLink>
                 </li>
               </ul>
             </li>

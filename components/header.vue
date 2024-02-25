@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {useGetConfig} from "~/apis";
-const state = reactive({
+const state:any = reactive({
   animation:true,
   background:'',
   config:[]

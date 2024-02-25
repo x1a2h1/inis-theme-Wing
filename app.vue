@@ -1,23 +1,26 @@
 <script lang="ts" setup>
 import {useGetConfig} from "~/apis";
-const skinMode:any = useCookie('skin-mode');
 const config = useState('config')
+const skinMode:any = useCookie('skin-mode');
+
+
 useHead({
   link:[
     {rel:'icon',type:'image/x-icon',href:config?.value?.json?.favicon}
   ]
 })
-onBeforeMount(async ()=>{
-  ((body) => {
-    if (skinMode.value === undefined){
-      body.add('auto')
-    }else {
-      body.add(skinMode.value)
-    }
-  })(document.documentElement.classList)
+
+onBeforeMount( ()=>{
+    // if (skinMode.value === undefined){
+    //   document.documentElement.classList.add('auto');
+    // }else {
+    //   document.documentElement.classList.add(skinMode.value);
+    // }
+
   method.init()
-  await method.getGlobalConfig()
+  method.getGlobalConfig()
 })
+
 const method = {
   init:()=>{
 

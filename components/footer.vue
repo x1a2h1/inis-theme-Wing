@@ -1,18 +1,15 @@
 <script setup lang="ts">
 import config from "../plugins/config";
-
-const skinMode:any = useCookie('skin-mode');
+import {useColorMode} from "#imports";
 
 const state = reactive({
   animation: "",
   skinMode:useCookie('skin-mode'),
   config:useState('config'),
   modeList: [
-    { name: 'Auto', icon: 'czs-web-edit', mode: 'auto' },
-    // { name: $lang.translate('Auto'), icon: 'czs-bot', mode: 'auto' },
+    { name: 'System', icon: 'czs-setting', mode: 'system' },
     { name: 'Light', icon: 'czs-sun', mode: 'light' },
     { name: 'Dark', icon: 'czs-moon', mode: 'dark' },
-    // { name: 'Relax', icon: 'czs-eye', mode: 'relax' },
   ],
   langList: [
     { name: '🇨🇳 简体中文', mode: 'zh_CN' },
@@ -32,15 +29,10 @@ const method = {
     const target = e.target;
     if ( !target.closest('a') ) return;
     const mode = target.dataset.mode;
-    if (skinMode.value != mode) {
-      skinMode.value = mode
+    const colorMode = useColorMode()
+    if (colorMode.preference != mode) {
+      colorMode.preference = mode
     }
-    console.log("切换成功：",useCookie('skin-mode'));
-    ((body) => {
-      body.remove('auto', 'light', 'dark');
-      body.add(mode);
-    })(document.documentElement.classList);
-
   },
   toggleLanguage:(e:any)=>{
     const target = e.target;
