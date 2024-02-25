@@ -5119,93 +5119,6 @@ body .view-image-btn:hover {
     border-color: rgba(188, 195, 206, 0.2);
 }
 
-/* 定义 dark 模式的颜色 */
-@media (prefers-color-scheme: dark) {
-
-    html.auto {
-        background-color: #232830;
-    }
-    html.auto body {
-        background-color: rgba(35, 40, 48, 0.8);
-    }
-    html.auto body .chip {
-        background-color: rgba(188, 195, 206, 0.1);
-    }
-    html.auto body .loading-full {
-        background-color: rgba(42, 48, 57, 0.5);
-    }
-    html.auto body #app.layout .uni-bg, html.auto body #app.layout #aside #tab-toc:checked ~ .aside-tab .toc-active label, html.auto body #app.layout #aside #tab-nav:checked ~ .aside-tab .nav-active label, html.auto body #app.layout #notes .notes-tabbar {
-        background-color: rgba(42, 48, 57, 0.9);
-    }
-    html.auto body #app.layout .modal-overlay {
-        background-color: rgba(48, 55, 66, 0.8);
-    }
-    html.auto body #app.layout .modal-container {
-        background-color: #303742;
-    }
-    html.auto body #app.layout .modal-container .form-input, html.auto body #app.layout .modal-container #comments #comment_form .editor-content, html.auto body #app.layout #comments #comment_form .modal-container .editor-content {
-        color: #bcc3ce;
-        background-color: rgba(188, 195, 206, 0.1);
-    }
-    html.auto body #app.layout .modal-container .form-input:not(:focus), html.auto body #app.layout .modal-container #comments #comment_form .editor-content:not(:focus), html.auto body #app.layout #comments #comment_form .modal-container .editor-content:not(:focus) {
-        border-color: rgba(188, 195, 206, 0.2);
-    }
-    html.auto body #app.layout .menu .menu-item a:hover, html.auto body #app.layout .menu .menu-item a:focus, html.auto body #app.layout .menu .menu-item a:active, html.auto body #app.layout .menu .menu-item a.active {
-        background-color: rgba(69, 80, 96, 0.5);
-    }
-    html.auto body #app.layout .menu-badge .label {
-        color: #bcc3ce;
-        background-color: rgba(188, 195, 206, 0.1);
-    }
-    html.auto body #app.layout #header .logo .fullname a {
-        color: #f7f8f9;
-    }
-    html.auto body #app.layout #header .header__right .dark-mode-btn {
-        display: none;
-    }
-    html.auto body #app.layout #header .header__right .light-mode-btn {
-        display: inline-flex;
-    }
-    html.auto body #app.layout #aside {
-        background: #303742;
-    }
-    html.auto body #app.layout #aside .header_nav li:not([class*=current-]),
-    html.auto body #app.layout #aside .footer_nav li:not([class*=current-]) {
-        color: #bcc3ce;
-    }
-    html.auto body #app.layout #main {
-        color: #f7f8f9;
-    }
-    html.auto body #app.layout #main .content::after {
-        background-color: #2a3039;
-    }
-    html.auto body #app.layout #main .article-mask:not(:hover) .article-title {
-        color: #f7f8f9 !important;
-    }
-    html.auto body #app.layout #main .article-thumbnail {
-        box-shadow: 0 0 0 1px rgba(188, 195, 206, 0.1);
-    }
-    html.auto body #app.layout #main .pagination li a {
-        color: #f7f8f9;
-    }
-    html.auto body #app.layout #notes .notes-item h3.h5 a:not(:hover) {
-        color: #fff !important;
-    }
-    html.auto body #app.layout #notes .notes-item .dropdown .menu {
-        box-shadow: 0 0 1px #455060;
-    }
-    html.auto body #app.layout #comments #comment_form .userinfo {
-        background-color: #303742;
-        box-shadow: 0 0 2rem 1px rgba(188, 195, 206, 0.2), 0 0 0 999rem rgba(48, 55, 66, 0.2);
-    }
-    html.auto body #app.layout #comments #comment_form .form-input, html.auto body #app.layout #comments #comment_form .editor-content {
-        color: #bcc3ce;
-    }
-    html.auto body #app.layout #comments #comment_form .form-input:not(:focus), html.auto body #app.layout #comments #comment_form .editor-content:not(:focus) {
-        border-color: rgba(188, 195, 206, 0.2);
-    }
-}
-
 /* 代码框功能美化 - 开始 */
 
 code::-webkit-scrollbar{width:6px;height:6px}
@@ -5227,17 +5140,6 @@ code ::selection{background:rgba(40,44,52,0.7);color:#fff;text-shadow:none}
 /* 代码框功能美化 - 结束 */
 
 /* markdown-it shiki 相关样式*/
-@media (prefers-color-scheme: dark) {
-    .auto .shiki,
-    .auto .shiki span {
-        color: var(--shiki-dark) !important;
-        background-color: var(--shiki-dark-bg) !important;
-        /* 可选，用于定义字体样式 */
-        font-style: var(--shiki-dark-font-style) !important;
-        font-weight: var(--shiki-dark-font-weight) !important;
-        text-decoration: var(--shiki-dark-text-decoration) !important;
-    }
-}
 
 .dark-mode .shiki,
 .dark-mode .shiki span {

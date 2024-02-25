@@ -4,7 +4,7 @@ import {reactive} from "vue";
 const route = useRoute()
 const state =reactive({
   animation:'',
-  background:'animation-start'
+  background:''
 })
 
 onMounted(async ()=>{
@@ -26,13 +26,12 @@ const method = {
   <Header />
     <div id="core" class="container off-canvas off-canvas-sidebar-show">
       <Aside/>
-
-    <a class="off-canvas-overlay" href="#close"></a>
-    <main id="main" class="uni-bg uni-shadow off-canvas-content">
-      <div class="content">
-        <slot />
-      </div>
-    </main>
+      <a class="off-canvas-overlay" href="#close"></a>
+      <main id="main" class="uni-bg uni-shadow off-canvas-content">
+          <div class="content animation-start">
+          <slot />
+          </div>
+      </main>
     </div>
     <Footer id="footer" />
   </div>

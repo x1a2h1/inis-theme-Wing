@@ -28,7 +28,7 @@ const state = reactive({
     }
   }
 })
-onMounted(async ()=>{
+onBeforeMount(async ()=>{
    await method.init()
 })
 
@@ -37,7 +37,6 @@ const method = {
     await nextTick()
     await method.getConfig()
     await method.getTest()
-
   },
   getConfig:async ()=>{
     const { data } = await useGetConfig('SITE_INFO')
