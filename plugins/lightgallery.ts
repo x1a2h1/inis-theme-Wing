@@ -7,6 +7,12 @@ import 'lightgallery/css/lg-comments.css'
 import lightGallery from "lightgallery";
 export default defineNuxtPlugin(async (NuxtApp)=>{
     NuxtApp.vueApp.directive('lightgallery',(el)=>{
+        // 查询标签
+        let lgc:any = document.getElementsByClassName('lg-container')
+        console.log('查询到的标签',lgc)
+        for (let i = lgc.length - 1 ;i >= 0 ;i--){
+            lgc[i].parentNode.removeChild(lgc[i])
+        }
         let lg:any = document.getElementById('lightgallery')
         const imgRow = el.querySelectorAll('img')
         const plugin = lightGallery(lg, {
@@ -18,7 +24,7 @@ export default defineNuxtPlugin(async (NuxtApp)=>{
             loop:false,
         });
 
-        watch(()=>useRoute().name,async ()=>{
+        watch(()=>useRoute().name,()=>{
             console.log('lightgallery检测到路由变化销毁lg')
             plugin.destroy()
         })
