@@ -73,12 +73,9 @@ const method = {
   handleTabs:(item:any)=>{
     state.loading = true
     state.search.type = item.id
-    // 模拟请求
-    setTimeout(()=>{
       method.getTest().then(()=>{
         state.loading = false
       })
-    },600)
 
   //   模拟请求结束
   },
