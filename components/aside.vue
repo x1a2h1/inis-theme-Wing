@@ -110,8 +110,7 @@ watch(() => route.name,
             <NuxtLink :to="item.url" @click="()=>{state.currentIndex = item.id}">{{item.title}}</NuxtLink>
           </li>
         </ul>
-        <div id="menu-bottom" class="footer_nav reset-ul uni-bg uni-shadow " v-if="method.hasFooterNav">
-          <ul>
+          <ul  id="menu-bottom" class="footer_nav reset-ul uni-bg uni-shadow " v-if="method.hasFooterNav">
             <li v-for="item in state.footerNavItems" :key="item.id" :id="`menu-item-${item.id}`"  :class="[`menu-item-${item.id} `, {'current-menu-item': $route.path == item.url}]">
               <NuxtLink :href="item.url">{{ item.title }}</NuxtLink>
               <ul class="sub-menu">
@@ -121,7 +120,6 @@ watch(() => route.name,
               </ul>
             </li>
           </ul>
-        </div>
         <div class="aside-widget-area">
         </div>
       </div>
