@@ -7,6 +7,7 @@ const state:object | any = reactive({
   data:Object
 })
 onBeforeMount(async ()=>{
+  await nextTick()
   await method.init()
 })
 const method = {
@@ -18,8 +19,6 @@ const method = {
     console.log('data about',data)
     if ( data!= null ){
       state.data = data
-    }else {
-      console.log('about data',data)
     }
   }
 }
@@ -27,7 +26,10 @@ const method = {
 
 <template>
   <article>
-    <div class="divider"></div>
+    <header>
+      <h1 itemprop="headline" class="article-title h2 mb-2">{{state.data.title}}</h1>
+      <div class="divider"></div>
+    </header>
     <div class="article-content" itemprop="articleBody">
       <div v-html="state.data.content"></div>
     </div>

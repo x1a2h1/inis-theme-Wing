@@ -1,16 +1,12 @@
 <script lang="ts" setup>
 import {useGetConfig} from "~/apis";
-const config = useState('config')
-const skinMode:any = useCookie('skin-mode');
-
-
+const config:object |any = useState('config')
 useHead({
   link:[
     {rel:'icon',type:'image/x-icon',href:config?.value?.json?.favicon},
     {rel:'stylesheet', href:"/caomei/style.css"}
   ]
 })
-
 onBeforeMount( async ()=>{
   method.init()
   await method.getGlobalConfig()
@@ -18,7 +14,6 @@ onBeforeMount( async ()=>{
 
 const method = {
   init:()=>{
-    console.log(useCookie('skin-mode'))
   },
   getGlobalConfig:async ()=>{
     const { data } = await useGetConfig('SITE_INFO')

@@ -65,6 +65,7 @@ const method = {
           ]
       },
       { id: 4, title: '友链', url: '/links',children: [] },
+      { id: 4, title: '番剧', url: '/bangumi',children: [] },
     ];
   },
 }
@@ -110,7 +111,7 @@ watch(() => route.name,
         </ul>
           <ul  id="menu-bottom" class="footer_nav reset-ul uni-bg uni-shadow " v-if="method.hasFooterNav()">
             <li v-for="item in state.footerNavItems" :key="item.id" :id="`menu-item-${item.id}`"  :class="[`menu-item-${item.id} `, {'current-menu-item': $route.path == item.url}]">
-              <NuxtLink :to="item.url">{{ item.title }}</NuxtLink>
+              <nuxt-link :to="item.url">{{ item.title }}</nuxt-link>
             </li>
           </ul>
         <div class="aside-widget-area">
