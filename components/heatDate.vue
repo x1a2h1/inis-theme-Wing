@@ -18,7 +18,7 @@ const method = {
 <template>
   <div class="heatmap-map__item tooltip" :data-tooltip="tooltip">
     <div v-if="states" class="heatmap-map__item-block">
-      <div v-for="(key, index) in Object.keys(states)" :key="index" :class="['heatmap-map__item-inner',`level-${states.count}`, { active: states[key] }]">
+      <div v-for="(key, index) in Object.keys(states)" :key="index" :class="['heatmap-map__item-inner',`level-${ states.count> 4 ?  4 : states.count}`, { active: states[key] }]">
       </div>
     </div>
   </div>

@@ -9,7 +9,6 @@ export default defineNuxtPlugin(async (NuxtApp)=>{
     NuxtApp.vueApp.directive('lightgallery',(el)=>{
         // 查询标签
         let lgc:any = document.getElementsByClassName('lg-container')
-        console.log('查询到的标签',lgc)
         for (let i = lgc.length - 1 ;i >= 0 ;i--){
             lgc[i].parentNode.removeChild(lgc[i])
         }
@@ -25,7 +24,6 @@ export default defineNuxtPlugin(async (NuxtApp)=>{
         });
 
         watch(()=>useRoute().name,()=>{
-            console.log('lightgallery检测到路由变化销毁lg')
             plugin.destroy()
         })
     })
