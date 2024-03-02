@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import {useGetArticleDetail} from "~/apis";
 const route = useRoute()
-const state:any = reactive({
+const state:object | any = reactive({
   isPosts:false,
   isChecked:false,
-  headerNavItems: [],
-  footerNavItems: [],
+  headerNavItems: Array,
+  footerNavItems: Array,
   currentIndex:1,
   toc:[]
 })
@@ -57,15 +57,14 @@ const method = {
       { id: 2, title: '作品', url: '/works',icon:'czs-clothes-l' },
     ];
     state.footerNavItems = [
-      { id: 3, title: '关于博主', url: '/about',icon:'czs-code-l',children:[
-          {
-            title:'追番',
-            url:'#'
-          },
+      { id: 3, title: '关于博主', url: '/about',children:[
+          // {
+          //   title:'追番',
+          //   url:'/bangumi'
+          // },
           ]
       },
-      { id: 4, title: '友链', url: '/links' },
-      // { id: 5, title: '音乐', url: '/terms-of-service' },
+      { id: 4, title: '友链', url: '/links',children: [] },
     ];
   },
 }
@@ -98,31 +97,26 @@ watch(() => route.name,
           </li>
         </ul>
         <ul v-if="state.isPosts" class="toc-list toc-content">
-          <li v-for="(item, index) in state.toc" :key="index" class="toc-item nav-item" style="text-indent: 0em">
+          <li v-for="(item, index) in state.toc" :key="index" class="toc-item nav-item" style="text-indent: 0">
             <a :href="'#'+item.anchor">{{item.title}}</a>
           </li>
         </ul>
 
-<!--         默认nav-->
       <div>
         <ul id="menu-header" class="header_nav reset-ul uni-bg uni-shadow" v-if="method.hasHeaderNav()">
           <li :id="`menu-item-${item.id}`"  :class="[item.icon, `menu-item-${item.id} `, {'current-menu-item': $route.path == item.url}]"  v-for="item in state.headerNavItems" :key="item.id">
             <NuxtLink :to="item.url" @click="()=>{state.currentIndex = item.id}">{{item.title}}</NuxtLink>
           </li>
         </ul>
-          <ul  id="menu-bottom" class="footer_nav reset-ul uni-bg uni-shadow " v-if="method.hasFooterNav">
+          <ul  id="menu-bottom" class="footer_nav reset-ul uni-bg uni-shadow " v-if="method.hasFooterNav()">
             <li v-for="item in state.footerNavItems" :key="item.id" :id="`menu-item-${item.id}`"  :class="[`menu-item-${item.id} `, {'current-menu-item': $route.path == item.url}]">
-              <NuxtLink :href="item.url">{{ item.title }}</NuxtLink>
-              <ul class="sub-menu">
-                <li v-for="(child, index) in item?.children" :key="index">
-                  <NuxtLink :href="child.url">{{ child.title }}</NuxtLink>
-                </li>
-              </ul>
+              <NuxtLink :to="item.url">{{ item.title }}</NuxtLink>
             </li>
           </ul>
         <div class="aside-widget-area">
         </div>
       </div>
+
     </div>
   </div>
 </template>

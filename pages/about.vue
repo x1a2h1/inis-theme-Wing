@@ -1,35 +1,37 @@
 <script lang="ts" setup>
 import {useGetPage} from "~/apis";
-
-const state = reactive({
-  data:{
-    title:'',
-    content:''
-  }
+useHead({
+  title:'关于博主'
 })
-onMounted(async ()=>{
-  await nextTick()
+const state:object | any = reactive({
+  data:Object
+})
+onBeforeMount(async ()=>{
   await method.init()
 })
 const method = {
   init:async ()=>{
-
     await method.getPage()
-    useHead({
-      title:state.data.title
-    })
   },
   getPage:async ()=>{
     const { data } = await useGetPage('about')
+    console.log('data about',data)
     if ( data!= null ){
-      state.data  = data
+      state.data = data
+    }else {
+      console.log('about data',data)
     }
   }
 }
 </script>
 
 <template>
-<div v-html="state.data.content"></div>
+  <article>
+    <div class="divider"></div>
+    <div class="article-content" itemprop="articleBody">
+      <div v-html="state.data.content"></div>
+    </div>
+  </article>
 </template>
 
 <style scoped>

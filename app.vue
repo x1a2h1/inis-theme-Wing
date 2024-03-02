@@ -6,24 +6,18 @@ const skinMode:any = useCookie('skin-mode');
 
 useHead({
   link:[
-    {rel:'icon',type:'image/x-icon',href:config?.value?.json?.favicon}
+    {rel:'icon',type:'image/x-icon',href:config?.value?.json?.favicon},
+    {rel:'stylesheet', href:"/caomei/style.css"}
   ]
 })
 
-onBeforeMount( ()=>{
-    // if (skinMode.value === undefined){
-    //   document.documentElement.classList.add('auto');
-    // }else {
-    //   document.documentElement.classList.add(skinMode.value);
-    // }
-
+onBeforeMount( async ()=>{
   method.init()
-  method.getGlobalConfig()
+  await method.getGlobalConfig()
 })
 
 const method = {
   init:()=>{
-
     console.log(useCookie('skin-mode'))
   },
   getGlobalConfig:async ()=>{
@@ -33,7 +27,6 @@ const method = {
 }
 </script>
 <template>
-  <link rel="stylesheet" href="/caomei/style.css">
   <NuxtLoadingIndicator />
     <NuxtLayout>
       <NuxtPage />

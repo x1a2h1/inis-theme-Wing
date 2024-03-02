@@ -28,7 +28,7 @@ const method = {
       <Aside/>
       <a class="off-canvas-overlay" href="#close"></a>
       <main id="main" class="uni-bg uni-shadow off-canvas-content">
-          <div class="content animation-start">
+          <div class="content">
           <slot />
           </div>
       </main>

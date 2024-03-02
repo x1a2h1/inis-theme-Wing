@@ -8,7 +8,7 @@ const state:any = reactive({
   data:[]
 })
 
-onMounted(async ()=>{
+onBeforeMount(async ()=>{
   await method.init()
 })
 const method = {
