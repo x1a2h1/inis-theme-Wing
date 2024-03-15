@@ -72,7 +72,6 @@ const method = {
 watch(() => route.name,
     async (value) => {
   state.isPosts = false;
-  console.log('aside监听到路由:',value);
   if (value === 'detail-type-id') {
     await method.getPostsToc()
   }

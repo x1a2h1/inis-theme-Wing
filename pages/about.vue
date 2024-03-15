@@ -16,7 +16,6 @@ const method = {
   },
   getPage:async ()=>{
     const { data } = await useGetPage('about')
-    console.log('data about',data)
     if ( data!= null ){
       state.data = data
     }

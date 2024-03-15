@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import {onMounted, reactive} from "vue";
 import { useGetNotes, useGetConfig } from "~/apis";
-const state = reactive({
+const state:any = reactive({
   loading:false,//加载状态
   tab:[
     {
@@ -195,7 +195,7 @@ const method = {
             v-for="(note, index) in method.filterNoteList()"
             :key="note.id"
             v-bind="{ note }"
-            @event="data => method.handleNoteCard(data,note,index)"
+            @event="(data:object | any) => method.handleNoteCard(data,note,index)"
             @topic="method.handleTopic"
             v-show="state.search.type === 'all'|| state.search.type === 'notes'&&method.isNote(note) || state.search.type === 'article'&&!method.isNote(note)"
         />

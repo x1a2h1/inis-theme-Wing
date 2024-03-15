@@ -31,12 +31,10 @@ onMounted(async ()=>{
 const method = {
   init:async ()=>{
     await method.getArticleData()
-    console.log(state.data.content)
   },
   getArticleData:async ()=>{
     const { data } = await useGetArticleDetail(id)
     state.data = data
-    console.log(data)
     state.content  = method.getPostsToc(data.content)
     useHead({
       title:data.title
