@@ -4,6 +4,19 @@ export function useGetNotes() {
         lazy:true
     })
 }
+export function useGetSearch(keywords){
+    const encodedSearchTerm = encodeURIComponent(keywords);   
+    return useHttpGet('getPostNote',`/api/common/PostNote?page=1&limit=10&where[0][0]=audit&where[0][1]==&where[0][2]=1&order=create_time desc&like[0][0]=content&like[0][1]=%25${encodedSearchTerm}%25&like[1][0]=title&like[1][1]=%25${encodedSearchTerm}%25&like[2][0]=tags&like[2][1]=%25${encodedSearchTerm}%25`,{
+        lazy:true
+    })
+}
+
+export function useGetTagCount(id){
+    const encodedSearchTerm = encodeURIComponent(id);   
+    return useHttpGet('getPostNote',`/api/common/PostNote?like[0][0]=tags&like[0][1]=%25${encodedSearchTerm}%25`,{
+        lazy:true
+    })
+}
 
 export function useGetArticleDetail(id) {
     return useHttpGet('PostDetail',`/api/common/PostDetail?id=${id}`,{

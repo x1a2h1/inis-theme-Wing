@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {onMounted} from "vue";
-import {useGetRandTags} from "~/apis";
+import {useGetRandTags, useGetTagCount} from "~/apis";
 const props = defineProps({
   active:String
 })
@@ -16,8 +16,11 @@ const emit = defineEmits(['topic'])
 const method = {
   init:async ()=>{
     state.loading = true
-    const {data } = await useGetRandTags()
+    const { data } = await useGetRandTags()
     state.topics = data
+    for(let i = 0; i < state.topics.length; i++) {
+      state.topics[i].count = await useGetTagCount(state.topics[i].id).then(res => res.data.count)
+    }
   },
   handleTopic:((topic:any)=>{
       emit('topic', topic.name)
