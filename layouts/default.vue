@@ -33,7 +33,7 @@ const method = {
           </div>
       </main>
     </div>
-    <Footer id="footer" />
+    <Footer />
   </div>
 
 </template>

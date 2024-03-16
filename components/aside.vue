@@ -103,13 +103,13 @@ watch(() => route.name,
         </ul>
 
       <div>
-        <ul id="menu-header" class="header_nav reset-ul uni-bg uni-shadow" v-if="method.hasHeaderNav()">
-          <li :id="`menu-item-${item.id}`"  :class="[item.icon, `menu-item-${item.id} `, {'current-menu-item': $route.path == item.url}]"  v-for="item in state.headerNavItems" :key="item.id">
+        <ul id="menu-header" class="header_nav reset-ul uni-bg shadow-sm" v-if="method.hasHeaderNav()">
+          <li :id="`menu-item-${item.id}`"  :class="[item.icon, `menu-item-${item.id}` , {'bg-blue-700 border-rd text-white': $route.path == item.url}]"  v-for="item in state.headerNavItems" :key="item.id">
             <NuxtLink :to="item.url" @click="()=>{state.currentIndex = item.id}">{{item.title}}</NuxtLink>
           </li>
         </ul>
-          <ul  id="menu-bottom" class="footer_nav reset-ul uni-bg uni-shadow " v-if="method.hasFooterNav()">
-            <li v-for="item in state.footerNavItems" :key="item.id" :id="`menu-item-${item.id}`"  :class="[`menu-item-${item.id} `, {'current-menu-item': $route.path == item.url}]">
+          <ul  class="footer_nav reset-ul uni-bg uni-shadow" v-if="method.hasFooterNav()">
+            <li v-for="item in state.footerNavItems" :key="item.id" :id="`menu-item-${item.id}`"  :class="[`menu-item-${item.id} `, {'bg-blue-600 text-white border-rd dark:bg-red': $route.path == item.url}]">
               <nuxt-link :to="item.url">{{ item.title }}</nuxt-link>
             </li>
           </ul>
@@ -122,5 +122,4 @@ watch(() => route.name,
 </template>
 
 <style scoped>
-
 </style>

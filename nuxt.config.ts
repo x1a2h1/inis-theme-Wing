@@ -22,5 +22,5 @@ export default defineNuxtConfig({
   },
 
   devtools: { enabled: true },
-  modules: ["@nuxt/image",'@nuxtjs/color-mode']
+  modules: ["@nuxt/image",'@nuxtjs/color-mode','@unocss/nuxt',]
 })

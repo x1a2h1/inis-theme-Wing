@@ -21,14 +21,14 @@
  */
 /* Document
    ========================================================================== */
-html {
-    font-family: sans-serif;
-    /* 1 */
-    -ms-text-size-adjust: 100%;
-    /* 3 */
-    -webkit-text-size-adjust: 100%;
-    /* 3 */
-}
+/*html {*/
+/*    font-family: sans-serif;*/
+/*    !* 1 *!*/
+/*    -ms-text-size-adjust: 100%;*/
+/*    !* 3 *!*/
+/*    -webkit-text-size-adjust: 100%;*/
+/*    !* 3 *!*/
+/*}*/
 
 /* Sections
    ========================================================================== */
@@ -42,23 +42,23 @@ body {
 /**
  * Add the correct display in IE 9-.
  */
-article,
-aside,
-footer,
-header,
-nav,
-section {
-    display: block;
-}
+/*article,*/
+/*aside,*/
+/*footer,*/
+/*header,*/
+/*nav,*/
+/*section {*/
+/*    display: block;*/
+/*}*/
 
 /**
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
  */
-h1 {
-    font-size: 2em;
-    margin: 0.67em 0;
-}
+/*h1 {*/
+/*    font-size: 2em;*/
+/*    margin: 0.67em 0;*/
+/*}*/
 
 /* Grouping content
    ========================================================================== */
@@ -3740,14 +3740,7 @@ body .layout #aside .header_nav li:hover > a,
 body .layout #aside .footer_nav li:hover > a {
     background-color: rgba(188, 195, 206, 0.1);
 }
-body .layout #aside .header_nav li[class*=current-],
-body .layout #aside .footer_nav li[class*=current-] {
-    color: #fff;
-}
-body .layout #aside .header_nav li[class*=current-] > a,
-body .layout #aside .footer_nav li[class*=current-] > a {
-    background-color: #3366ff;
-}
+
 body .layout #aside .header_nav li .sub-menu,
 body .layout #aside .footer_nav li .sub-menu {
     display: flex;
@@ -5150,7 +5143,6 @@ code ::selection{background:rgba(40,44,52,0.7);color:#fff;text-shadow:none}
     font-weight: var(--shiki-dark-font-weight) !important;
     text-decoration: var(--shiki-dark-text-decoration) !important;
 }
-
 /* markdown-it shiki 相关样式 - 结束*/
 
 
