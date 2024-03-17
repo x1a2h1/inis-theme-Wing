@@ -5,7 +5,7 @@ import { format } from 'timeago.js'
 import dayjs from "dayjs";
 const route = useRoute()
 const {type,id} = route.params
-const state = reactive({
+const state:any = reactive({
   data:{
     title:'',
     create_time:0,
@@ -76,7 +76,7 @@ const method = {
 <template>
   <article class="article" itemscope="itemscope" itemtype="http://schema.org/Article">
     <header class="article-header">
-      <h1 itemprop="headline" class="article-title h2 mb-2">{{state.data.title}}</h1>
+      <h1 itemprop="headline" class="article-title font-size-7 font-bold mb-2">{{state.data.title}}</h1>
       <ul class="article-info d-flex text-gray reset-ul m-0">
         <li>
           <i class="czs-forum"></i>
