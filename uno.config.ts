@@ -1,7 +1,6 @@
 import { defineConfig } from 'unocss'
 import transformerDirectives from '@unocss/transformer-directives'
 import presetMini from '@unocss/preset-mini'
-import type { DarkModeSelectors } from '@unocss/preset-mini'
 
 export default defineConfig({
     presets: [
