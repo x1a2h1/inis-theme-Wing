@@ -22,15 +22,15 @@ const method = {
 </script>
 
 <template>
-    <div id="header" class="flex-center justify-between">
+    <div class="header">
       <hgroup class="logo" itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
         <h1 class="fullname" itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
-          <a href="#">{{ state.config?.json?.title ||'x1a2h1'}}</a>
+          <NuxtLink href="#">{{ state.config?.json?.title ||'x1a2h1'}}</NuxtLink>
         </h1>
         <meta itemprop="name" :content="state.config?.json?.remark">
         <meta itemprop="url" content="#">
       </hgroup>
-      <section class="header__right d-flex">
+      <div class="header_right">
         <form method="get" action="search" class="search">
           <input class="search-key btn btn-link btn-action right-btn uni-bg uni-shadow" name="s" placeholder="Please enter..." type="text"
                  required="required"/>
@@ -39,10 +39,56 @@ const method = {
         <a class="btn btn-link btn-action right-btn uni-bg uni-shadow menu-btn off-canvas-toggle flex-center ml-2" href="#aside">
           <i class="text-large czs-menu-l flex-center"></i>
         </a>
-      </section>
+      </div>
     </div>
 </template>
 
 <style scoped>
+.header {
+  @apply relative h-24 pa-4% w-auto flex justify-center items-center  justify-between  md:text-red md:w-full ;
+}
 
+.logo {
+  @apply text-center;
+}
+ .fullname {
+  @apply m0 font-size-6;
+}
+.fullname NuxtLink {
+  @apply text-blue-700 decoration-none;
+}
+
+.header_right {
+  @apply flex absolute top-50% -mt right-4% text-[#66758C] z99;
+}
+.search {
+  @apply relative;
+}
+.search [class*=czs-] {
+ @apply absolute z202 top-0 bottom-0 left-0 right-0 pointer-events-none;
+}
+.search-key {
+  outline: none;
+  @apply relative z201;
+}
+.search-key::placeholder {
+  opacity: 0;
+}
+.search-key:not(.header_right .search-key:focus) {
+  color: transparent;
+}
+.search-key:focus {
+  padding: 0 1rem 0 1.8rem;
+  box-shadow: 0 0 0 9999rem rgba(48, 55, 66, 0.1);
+  @apply w48 bg-gray-100 text-left;
+}
+.search-key:focus ~ [class*=czs-] {
+  @apply justify-start left-2 right-unset z202;
+}
+.header_right .right-btn{
+  @apply decoration-none text-current;
+}
+.header_right .menu-btn {
+  @apply inline-flex md:hidden
+}
 </style>
