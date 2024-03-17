@@ -25,7 +25,7 @@ const method = {
     <div class="header">
       <hgroup class="logo" itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
         <h1 class="fullname" itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
-          <NuxtLink href="#">{{ state.config?.json?.title ||'x1a2h1'}}</NuxtLink>
+          <NuxtLink to="/">{{ state.config?.json?.title ||'x1a2h1'}}</NuxtLink>
         </h1>
         <meta itemprop="name" :content="state.config?.json?.remark">
         <meta itemprop="url" content="#">
@@ -54,8 +54,8 @@ const method = {
  .fullname {
   @apply m0 font-size-6;
 }
-.fullname NuxtLink {
-  @apply text-blue-700 decoration-none;
+.fullname a {
+  @apply text-blue-700 decoration-none dark:text-[#f7f8f9];
 }
 
 .header_right {
@@ -85,10 +85,10 @@ const method = {
 .search-key:focus ~ [class*=czs-] {
   @apply justify-start left-2 right-unset z202;
 }
-.header_right .right-btn{
+ .right-btn{
   @apply decoration-none text-current;
 }
-.header_right .menu-btn {
+ .menu-btn {
   @apply inline-flex md:hidden
 }
 </style>

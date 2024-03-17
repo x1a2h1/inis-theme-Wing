@@ -109,7 +109,7 @@ watch(() => route.name,
           </li>
         </ul>
           <ul  class="footer_nav reset-ul uni-bg uni-shadow" v-if="method.hasFooterNav()">
-            <li v-for="item in state.footerNavItems" :key="item.id" :id="`menu-item-${item.id}`"  :class="[`menu-item-${item.id} `, {'bg-blue-600 text-white border-rd dark:bg-red': $route.path == item.url}]">
+            <li v-for="item in state.footerNavItems" :key="item.id" :id="`menu-item-${item.id}`"  :class="[`menu-item-${item.id} `, {'bg-blue-600 text-white border-rd dark:bg-blur-600': $route.path == item.url}]">
               <nuxt-link :to="item.url">{{ item.title }}</nuxt-link>
             </li>
           </ul>

@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  modules: ["@nuxt/image",'@nuxtjs/color-mode','@unocss/nuxt',],
   app:{
     pageTransition: { name: 'page',mode: 'out-in' },
     head:{
@@ -20,7 +21,9 @@ export default defineNuxtConfig({
     apiBase:'',
     apiSecret: '',
   },
+  colorMode:{
+    classSuffix: ''
+  },
 
   devtools: { enabled: true },
-  modules: ["@nuxt/image",'@nuxtjs/color-mode','@unocss/nuxt',]
 })

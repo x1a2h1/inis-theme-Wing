@@ -42,23 +42,16 @@ body {
 /**
  * Add the correct display in IE 9-.
  */
-/*article,*/
-/*aside,*/
-/*footer,*/
-/*header,*/
-/*nav,*/
-/*section {*/
-/*    display: block;*/
-/*}*/
+
 
 /**
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
  */
-/*h1 {*/
-/*    font-size: 2em;*/
-/*    margin: 0.67em 0;*/
-/*}*/
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
 
 /* Grouping content
    ========================================================================== */
@@ -80,14 +73,14 @@ main {
  * 1. Add the correct box sizing in Firefox.
  * 2. Show the overflow in Edge and IE.
  */
-hr {
-    box-sizing: content-box;
-    /* 1 */
-    height: 0;
-    /* 1 */
-    overflow: visible;
-    /* 2 */
-}
+/*hr {*/
+/*    box-sizing: content-box;*/
+/*    !* 1 *!*/
+/*    height: 0;*/
+/*    !* 1 *!*/
+/*    overflow: visible;*/
+/*    !* 2 *!*/
+/*}*/
 
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers. (removed)
@@ -216,9 +209,9 @@ audio:not([controls]) {
 /**
  * Remove the border on images inside links in IE 10-.
  */
-img {
-    border-style: none;
-}
+/*img {*/
+/*    border-style: none;*/
+/*}*/
 
 /**
  * Hide the overflow in IE.
@@ -3540,78 +3533,7 @@ body .layout .db--image {
         padding: 32% 22.5%;
     }
 }
-body .layout #header {
-    position: relative;
-    width: 100%;
-    height: 6rem;
-    padding: 0 4%;
-    color: #fff;
-}
-body .layout #header .logo {
-    text-align: center;
-}
-body .layout #header .logo .fullname {
-    margin: 0;
-    font-size: 1.5rem;
-}
-body .layout #header .logo .fullname a {
-    color: #66758c;
-    text-decoration: none;
-}
-body .layout #header .header__right {
-    position: absolute;
-    top: 50%;
-    margin-top: -1rem;
-    right: 4%;
-    color: #66758c;
-    z-index: 99;
-}
-body .layout #header .header__right .search {
-    position: relative;
-}
-body .layout #header .header__right .search [class*=czs-] {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 202;
-    pointer-events: none;
-}
-body .layout #header .header__right .search-key {
-    position: relative;
-    outline: none;
-    z-index: 201;
-}
-body .layout #header .header__right .search-key::placeholder {
-    opacity: 0;
-}
-body .layout #header .header__right .search-key:not(body .layout #header .header__right .search-key:focus) {
-    color: transparent;
-}
-body .layout #header .header__right .search-key:focus {
-    width: 12rem;
-    padding: 0 1rem 0 1.8rem;
-    background: #fff;
-    box-shadow: 0 0 0 9999rem rgba(48, 55, 66, 0.1);
-    text-align: left;
-}
-body .layout #header .header__right .search-key:focus::placeholder {
-    opacity: 0.5;
-}
-body .layout #header .header__right .search-key:focus ~ [class*=czs-] {
-    justify-content: flex-start;
-    left: 0.5rem;
-    right: unset;
-    z-index: 202;
-}
-body .layout #header .header__right .right-btn {
-    text-decoration: none;
-    color: currentColor;
-}
-body .layout #header .header__right .menu-btn {
-    display: none;
-}
+
 body .layout #core {
     position: relative;
     display: flex;
@@ -4558,9 +4480,6 @@ body .layout #footer .scroll-tools .dropdown[hover-show] .menu {
     }
 }
 @media (max-width: 960px) {
-    body .layout #header .header__right .menu-btn {
-        display: inline-flex;
-    }
     body .layout #aside {
         max-width: 14rem;
         padding: 0 1rem;
@@ -5029,86 +4948,78 @@ body .view-image-btn:hover {
 }
 
 /* Dark Mode */
-.dark-mode {
+.dark {
     background-color: #232830;
 }
-.dark-mode body {
+.dark body {
     background-color: rgba(35, 40, 48, 0.8);
 }
-.dark-mode body .chip {
+.dark body .chip {
     background-color: rgba(188, 195, 206, 0.1);
 }
-.dark-mode body .loading-full {
+.dark body .loading-full {
     background-color: rgba(42, 48, 57, 0.5);
 }
-.dark-mode body #app.layout .uni-bg, .dark-mode body #app.layout #aside #tab-toc:checked ~ .aside-tab .toc-active label, .dark-mode body #app.layout #aside #tab-nav:checked ~ .aside-tab .nav-active label, .dark-mode body #app.layout #notes .notes-tabbar {
+.dark body #app.layout .uni-bg, .dark body #app.layout #aside #tab-toc:checked ~ .aside-tab .toc-active label, .dark body #app.layout #aside #tab-nav:checked ~ .aside-tab .nav-active label, .dark body #app.layout #notes .notes-tabbar {
     background-color: rgba(42, 48, 57, 0.9);
 }
-.dark-mode body #app.layout .modal-overlay {
+.dark body #app.layout .modal-overlay {
     background-color: rgba(48, 55, 66, 0.8);
 }
-.dark-mode body #app.layout .modal-container {
+.dark body #app.layout .modal-container {
     background-color: #303742;
 }
-.dark-mode body #app.layout .modal-container .form-input, .dark-mode body #app.layout .modal-container #comments #comment_form .editor-content, .dark-mode body #app.layout #comments #comment_form .modal-container .editor-content {
+.dark body #app.layout .modal-container .form-input, .dark body #app.layout .modal-container #comments #comment_form .editor-content, .dark body #app.layout #comments #comment_form .modal-container .editor-content {
     color: #bcc3ce;
     background-color: rgba(188, 195, 206, 0.1);
 }
-.dark-mode body #app.layout .modal-container .form-input:not(:focus), .dark-mode body #app.layout .modal-container #comments #comment_form .editor-content:not(:focus), .dark-mode body #app.layout #comments #comment_form .modal-container .editor-content:not(:focus) {
+.dark body #app.layout .modal-container .form-input:not(:focus), .dark body #app.layout .modal-container #comments #comment_form .editor-content:not(:focus), .dark body #app.layout #comments #comment_form .modal-container .editor-content:not(:focus) {
     border-color: rgba(188, 195, 206, 0.2);
 }
-.dark-mode body #app.layout .menu .menu-item a:hover, .dark-mode body #app.layout .menu .menu-item a:focus, .dark-mode body #app.layout .menu .menu-item a:active, .dark-mode body #app.layout .menu .menu-item a.active {
+.dark body #app.layout .menu .menu-item a:hover, .dark body #app.layout .menu .menu-item a:focus, .dark body #app.layout .menu .menu-item a:active, .dark body #app.layout .menu .menu-item a.active {
     background-color: rgba(69, 80, 96, 0.5);
 }
-.dark-mode body #app.layout .menu-badge .label {
+.dark body #app.layout .menu-badge .label {
     color: #bcc3ce;
     background-color: rgba(188, 195, 206, 0.1);
 }
-.dark-mode body #app.layout #header .logo .fullname a {
-    color: #f7f8f9;
-}
-.dark-mode body #app.layout #header .header__right .dark-mode-btn {
-    display: none;
-}
-.dark-mode body #app.layout #header .header__right .light-mode-btn {
-    display: inline-flex;
-}
-.dark-mode body #app.layout #aside {
+
+.dark body #app.layout #aside {
     background: #303742;
 }
-.dark-mode body #app.layout #aside .header_nav li:not([class*=current-]),
-.dark-mode body #app.layout #aside .footer_nav li:not([class*=current-]) {
+.dark body #app.layout #aside .header_nav li:not([class*=current-]),
+.dark body #app.layout #aside .footer_nav li:not([class*=current-]) {
     color: #bcc3ce;
 }
-.dark-mode body #app.layout #main {
+.dark body #app.layout #main {
     color: #f7f8f9;
 }
-.dark-mode body #app.layout #main .content::after {
+.dark body #app.layout #main .content::after {
     background-color: #2a3039;
 }
-.dark-mode body #app.layout #main .article-mask:not(:hover) .article-title {
+.dark body #app.layout #main .article-mask:not(:hover) .article-title {
     color: #f7f8f9 !important;
 }
-.dark-mode body #app.layout #main .article-thumbnail {
+.dark body #app.layout #main .article-thumbnail {
     box-shadow: 0 0 0 1px rgba(188, 195, 206, 0.1);
 }
-.dark-mode body #app.layout #main .pagination li a {
+.dark body #app.layout #main .pagination li a {
     color: #f7f8f9;
 }
-.dark-mode body #app.layout #notes .notes-item h3.h5 a:not(:hover) {
+.dark body #app.layout #notes .notes-item h3.h5 a:not(:hover) {
     color: #fff !important;
 }
-.dark-mode body #app.layout #notes .notes-item .dropdown .menu {
+.dark body #app.layout #notes .notes-item .dropdown .menu {
     box-shadow: 0 0 1px #455060;
 }
-.dark-mode body #app.layout #comments #comment_form .userinfo {
+.dark body #app.layout #comments #comment_form .userinfo {
     background-color: #303742;
     box-shadow: 0 0 2rem 1px rgba(188, 195, 206, 0.2), 0 0 0 999rem rgba(48, 55, 66, 0.2);
 }
-.dark-mode body #app.layout #comments #comment_form .form-input, .dark-mode body #app.layout #comments #comment_form .editor-content {
+.dark body #app.layout #comments #comment_form .form-input, .dark body #app.layout #comments #comment_form .editor-content {
     color: #bcc3ce;
 }
-.dark-mode body #app.layout #comments #comment_form .form-input:not(:focus), .dark-mode body #app.layout #comments #comment_form .editor-content:not(:focus) {
+.dark body #app.layout #comments #comment_form .form-input:not(:focus), .dark body #app.layout #comments #comment_form .editor-content:not(:focus) {
     border-color: rgba(188, 195, 206, 0.2);
 }
 
@@ -5134,8 +5045,8 @@ code ::selection{background:rgba(40,44,52,0.7);color:#fff;text-shadow:none}
 
 /* markdown-it shiki 相关样式*/
 
-.dark-mode .shiki,
-.dark-mode .shiki span {
+.dark .shiki,
+.dark .shiki span {
     color: var(--shiki-dark) !important;
     background-color: var(--shiki-dark-bg) !important;
     /* 可选，用于定义字体样式 */
