@@ -27,6 +27,9 @@
   "devDependencies": {
     "@nuxt/image": "^1.4.0",
     "@nuxtjs/color-mode": "^3.3.2",
+    "@unocss/nuxt": "^0.58.6",
+    "@unocss/preset-mini": "^0.58.6",
+    "@unocss/transformer-directives": "^0.58.6",
     "nuxt": "^3.10.3"
   }
 }
