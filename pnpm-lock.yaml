@@ -40,6 +40,9 @@ dependencies:
     version: 4.3.0(vue@3.4.21)
 
 devDependencies:
+  '@iconify/json':
+    specifier: ^2.2.193
+    version: 2.2.193
   '@nuxt/image':
     specifier: ^1.4.0
     version: 1.4.0
@@ -49,6 +52,9 @@ devDependencies:
   '@unocss/nuxt':
     specifier: ^0.58.6
     version: 0.58.6(postcss@8.4.35)(vite@5.1.6)(webpack@5.90.3)
+  '@unocss/preset-icons':
+    specifier: ^0.58.6
+    version: 0.58.6
   '@unocss/preset-mini':
     specifier: ^0.58.6
     version: 0.58.6
@@ -865,6 +871,13 @@ packages:
   /@fastify/busboy@2.1.1:
     resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
     engines: {node: '>=14'}
+    dev: true
+
+  /@iconify/json@2.2.193:
+    resolution: {integrity: sha512-1UuaDsCcm4LYzjul2QwHWe939RLYoaxJ1zDmnn+JWOaXW6tSMCdTWICaU5rCYjp//BQrhYY5ZorKKXPo7x5rUg==}
+    dependencies:
+      '@iconify/types': 2.0.0
+      pathe: 1.1.2
     dev: true
 
   /@iconify/types@2.0.0:
