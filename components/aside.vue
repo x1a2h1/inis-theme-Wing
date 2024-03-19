@@ -53,8 +53,8 @@ const method = {
 
 
     state.headerNavItems = [
-      { id: 1, title: '首页', url: '/',icon:'czs-home-l' },
-      { id: 2, title: '作品', url: '/works',icon:'czs-clothes-l' },
+      { id: 1, title: '首页', url: '/',icon:'i-humbleicons-home' },
+      { id: 2, title: '作品', url: '/works',icon:'i-material-symbols-workspace-premium-outline' },
     ];
     state.footerNavItems = [
       { id: 3, title: '关于博主', url: '/about',children:[
@@ -103,14 +103,19 @@ watch(() => route.name,
         </ul>
 
       <div>
-        <ul id="menu-header" class="header_nav reset-ul uni-bg shadow-sm" v-if="method.hasHeaderNav()">
-          <li :id="`menu-item-${item.id}`"  :class="[item.icon, `menu-item-${item.id}` , {'bg-blue-700 border-rd text-white': $route.path == item.url}]"  v-for="item in state.headerNavItems" :key="item.id">
-            <NuxtLink :to="item.url" @click="()=>{state.currentIndex = item.id}">{{item.title}}</NuxtLink>
+        <ul class="header_nav reset-ul uni-bg shadow-sm" v-if="method.hasHeaderNav()">
+          <li :id="`menu-item-${item.id}`"  :class="[`menu-item-${item.id}` , {'bg-blue-700 border-rd text-white': $route.path == item.url}]"  v-for="item in state.headerNavItems" :key="item.id">
+            <NuxtLink class="link" :to="item.url" @click="()=>{state.currentIndex = item.id}">
+            <div :class="item.icon" />
+            <span class="ml-1">
+            {{item.title}}
+            </span>
+            </NuxtLink>
           </li>
         </ul>
-          <ul  class="footer_nav reset-ul uni-bg uni-shadow" v-if="method.hasFooterNav()">
+          <ul class="footer_nav reset-ul uni-bg uni-shadow" v-if="method.hasFooterNav()">
             <li v-for="item in state.footerNavItems" :key="item.id" :id="`menu-item-${item.id}`"  :class="[`menu-item-${item.id} `, {'bg-blue-600 text-white border-rd dark:bg-blur-600': $route.path == item.url}]">
-              <nuxt-link :to="item.url">{{ item.title }}</nuxt-link>
+              <nuxt-link class="link" :to="item.url">{{ item.title }}</nuxt-link>
             </li>
           </ul>
         <div class="aside-widget-area">
@@ -122,4 +127,8 @@ watch(() => route.name,
 </template>
 
 <style scoped>
+.header_nav .link,
+.footer_nav  .link{
+  @apply flex p-2 text-current decoration-none w-full rd-1 shadow-none;
+}
 </style>

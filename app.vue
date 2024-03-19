@@ -4,7 +4,7 @@ const config:object |any = useState('config')
 useHead({
   link:[
     {rel:'icon',type:'image/x-icon',href:config?.value?.json?.favicon},
-    {rel:'stylesheet', href:"/caomei/style.css"}
+    // {rel:'stylesheet', href:"/caomei/style.css"}
   ]
 })
 onBeforeMount( async ()=>{

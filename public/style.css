@@ -3625,7 +3625,7 @@ body .layout #aside .footer_nav li {
     position: relative;
     color: #66758c;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     -webkit-font-smoothing: unset;
     -moz-osx-font-smoothing: unset;
@@ -3642,21 +3642,6 @@ body .layout #aside .footer_nav li::before {
     top: 0.5rem;
     left: 0.5rem;
     pointer-events: none;
-}
-body .layout #aside .header_nav li > a,
-body .layout #aside .footer_nav li > a {
-    display: block;
-    padding: 0.5rem 0.5rem;
-    flex: 1;
-    color: currentColor;
-    text-decoration: none;
-    box-shadow: none;
-    border-radius: 0.3rem;
-}
-body .layout #aside .header_nav li[class*=czs-] > a, body .layout #aside .header_nav li[class*=icon] > a,
-body .layout #aside .footer_nav li[class*=czs-] > a,
-body .layout #aside .footer_nav li[class*=icon] > a {
-    padding-left: 1.8rem;
 }
 body .layout #aside .header_nav li:hover > a,
 body .layout #aside .footer_nav li:hover > a {

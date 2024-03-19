@@ -81,6 +81,7 @@ const method = {
   },
   handleTopic:(topic:any)=>{
   //   点击话题
+    console.log('点击侧边标签')
     state.search.topics = ''
     state.paging.page = 1
     state.search.topics = topic

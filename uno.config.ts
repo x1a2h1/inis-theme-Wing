@@ -1,9 +1,10 @@
 import { defineConfig } from 'unocss'
 import transformerDirectives from '@unocss/transformer-directives'
 import presetMini from '@unocss/preset-mini'
-
+import presetIcons from '@unocss/preset-icons'
 export default defineConfig({
     presets: [
+        presetIcons(),
         presetMini({
         })
     ],
