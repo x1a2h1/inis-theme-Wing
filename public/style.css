@@ -2128,33 +2128,6 @@ code {
     transform: scale(0.75);
 }
 
-.dropdown {
-    display: inline-block;
-    position: relative;
-}
-.dropdown .menu {
-    animation: slide-down 0.15s ease 1;
-    display: none;
-    left: 0;
-    max-height: 50vh;
-    overflow-y: auto;
-    position: absolute;
-    top: 100%;
-}
-.dropdown.dropdown-right .menu {
-    left: auto;
-    right: 0;
-}
-.dropdown.active .menu,
-.dropdown .dropdown-toggle:focus + .menu,
-.dropdown .menu:hover {
-    display: block;
-}
-.dropdown .btn-group .dropdown-toggle:nth-last-child(2) {
-    border-bottom-right-radius: 0.2rem;
-    border-top-right-radius: 0.2rem;
-}
-
 .menu {
     box-shadow: 0 0.05rem 0.2rem rgba(48, 55, 66, 0.3);
     background: #fff;
@@ -4415,49 +4388,7 @@ body .layout #comments .comment-list > li.comment > .children .avatar-icon .btn 
 body .layout .load-next-comments {
     margin: 5rem 0;
 }
-body .layout #footer {
-    color: #bcc3ce;
-    padding: 5% 4%;
-}
-body .layout #footer a {
-    color: #66758c;
-}
-body .layout #footer a.theme-name {
-    position: relative;
-}
-body .layout #footer a.theme-name::after {
-    content: "";
-    position: absolute;
-    bottom: -3px;
-    left: 4px;
-    width: 4px;
-    height: 4px;
-    background-color: red;
-    box-shadow: 4px 0 orange, 8px 0 yellow, 12px 0 green, 16px 0 blue, 20px 0 purple;
-}
-body .layout #footer .scroll-tools {
-    display: none;
-    position: fixed;
-    right: 0;
-    top: 50%;
-    z-index: 999;
-    transition: 300ms;
-    display: flex;
-    flex-direction: column;
-}
-body .layout #footer .scroll-tools .scroll-top {
-    display: none;
-}
-body .layout #footer .scroll-tools.show {
-    display: block;
-}
-body .layout #footer .scroll-tools.show .scroll-top {
-    display: block;
-}
-body .layout #footer .scroll-tools .dropdown[hover-show] .menu {
-    top: 0;
-    right: 110%;
-}
+
 @media (min-width: 960px) {
     body .layout #aside {
         background: none !important;

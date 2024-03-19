@@ -86,13 +86,13 @@ watch(() => route.name,
         <input type="radio" id="tab-nav" name="aside-radio" hidden />
         <ul v-if="state.isPosts" class="aside-tab">
           <li class="toc-active">
-            <label for="tab-toc" class="c-hand flex flex-center">
-              <i class="czs-read-l"></i>
+            <label for="tab-toc" class="flex cursor-pointer">
+              <div class="i-material-symbols-light-chrome-reader-mode-outline-sharp w-1.2em h-1.2em"></div>
             </label>
           </li>
           <li class="nav-active">
-            <label for="tab-nav" class="c-hand flex flex-center">
-              <i class="czs-choose-list-l"></i>
+            <label for="tab-nav" class="cursor-pointer flex">
+              <div class="i-material-symbols-view-list-outline-sharp"></div>
             </label>
           </li>
         </ul>

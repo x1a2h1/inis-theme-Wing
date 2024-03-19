@@ -34,10 +34,10 @@ const method = {
         <form method="get" action="search" class="search">
           <input class="search-key btn btn-link btn-action right-btn uni-bg uni-shadow" name="s" placeholder="Please enter..." type="text"
                  required="required"/>
-          <i class="text-small czs-search-l flex-center"></i>
+          <i class="i-material-symbols-search w-1.2em h-1.2em ma"></i>
         </form>
         <a class="btn btn-link btn-action right-btn uni-bg uni-shadow menu-btn off-canvas-toggle flex-center ml-2" href="#aside">
-          <i class="text-large czs-menu-l flex-center"></i>
+          <i class="i-material-symbols-light-menu-rounded w-1.2em h-1.2em"></i>
         </a>
       </div>
     </div>
@@ -64,8 +64,8 @@ const method = {
 .search {
   @apply relative;
 }
-.search [class*=czs-] {
- @apply absolute z202 top-0 bottom-0 left-0 right-0 pointer-events-none;
+.search [class*=i-material] {
+ @apply absolute z202 top-0 bottom-0 left-0 right-0  pointer-events-none;
 }
 .search-key {
   outline: none;
@@ -82,7 +82,7 @@ const method = {
   box-shadow: 0 0 0 9999rem rgba(48, 55, 66, 0.1);
   @apply w48 bg-gray-100 text-left;
 }
-.search-key:focus ~ [class*=czs-] {
+.search-key:focus ~ [class*=i-material] {
   @apply justify-start left-2 right-unset z202;
 }
  .right-btn{
